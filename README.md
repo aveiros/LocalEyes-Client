@@ -1,0 +1,4 @@
+myHosterClient
+==============
+
+myHoster Android Client
