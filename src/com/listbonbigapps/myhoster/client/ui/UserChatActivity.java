@@ -23,7 +23,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class UserChatActivity extends Activity {
     private static final String TAG = "UserChatActivity";
@@ -175,13 +174,11 @@ public class UserChatActivity extends Activity {
     private ServiceConnection serviceConnection = new ServiceConnection() {
 	public void onServiceConnected(ComponentName className, IBinder binder) {
 	    service = ((myHosterService.ServiceBinder) binder).getService();
-	    Toast.makeText(UserChatActivity.this, "ServiceConnection: Connected", Toast.LENGTH_SHORT).show();
 	    connectXmpp();
 	}
 
 	public void onServiceDisconnected(ComponentName className) {
 	    service = null;
-	    Toast.makeText(UserChatActivity.this, "ServiceConnection: Disconnected", Toast.LENGTH_SHORT).show();
 	}
     };
 

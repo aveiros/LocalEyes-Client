@@ -20,8 +20,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import com.listbonbigapps.myhoster.client.R;
 import com.listbonbigapps.myhoster.client.service.myHosterService;
 import com.listbonbigapps.myhoster.client.util.XmppReceiverEvents;
@@ -78,7 +76,7 @@ public class ContactsActivity extends Activity {
 		    Intent intent = new Intent(getApplicationContext(), UserChatActivity.class);
 		    intent.putExtra("user", user);
 		    startActivity(intent);
-		    finish();
+		    //finish();
 		}
 	    }
 	});
@@ -304,13 +302,11 @@ public class ContactsActivity extends Activity {
     private ServiceConnection serviceConnection = new ServiceConnection() {
 	public void onServiceConnected(ComponentName className, IBinder binder) {
 	    service = ((myHosterService.ServiceBinder) binder).getService();
-	    Toast.makeText(ContactsActivity.this, "ServiceConnection: Connected", Toast.LENGTH_SHORT).show();
 	    connectXmpp();
 	}
 
 	public void onServiceDisconnected(ComponentName className) {
 	    service = null;
-	    Toast.makeText(ContactsActivity.this, "ServiceConnection: Disconnected", Toast.LENGTH_SHORT).show();
 	}
     };
 }

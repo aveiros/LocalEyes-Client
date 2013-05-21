@@ -22,6 +22,8 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class myHosterService extends Service {
+    private static final String TAG = "myHosterService";
+    
     private XMPPConnection connection;
     private ConnectionConfiguration config;
 
@@ -32,7 +34,6 @@ public class myHosterService extends Service {
     private final String SERVICE = "gmail.com";
 
     /* service private */
-    private static final String TAG = "myHosterService";
     private final IBinder binder = new ServiceBinder();
 
     @Override
