@@ -1,8 +1,12 @@
 package com.listbonbigapps.myhoster.client.ui;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import com.listbonbigapps.myhoster.client.R;
 import com.listbonbigapps.myhoster.client.request.UserLoginRequest;
 import com.listbonbigapps.myhoster.client.resources.UserResource;
+import com.listbonbigapps.myhoster.client.util.PreferencesHelper;
 import com.octo.android.robospice.JacksonSpringAndroidSpiceService;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -11,6 +15,7 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -27,13 +32,16 @@ public class LoginActivity extends Activity {
     private EditText EtUsername;
     private EditText EtPassword;
 
+    private String username;
+    private String password;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 	// Inflate the menu; this adds items to the action bar if it is present.
 	getMenuInflater().inflate(R.menu.login, menu);
 	return true;
     }
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -46,10 +54,12 @@ public class LoginActivity extends Activity {
 	BtLogin.setOnClickListener(new OnClickListener() {
 	    @Override
 	    public void onClick(View v) {
-		performUserLoginRequest(EtUsername.getText().toString(), EtPassword.getText().toString());
+		username = EtUsername.getText().toString();
+		password = EtPassword.getText().toString();
+		performUserLoginRequest(username, password);
 	    }
 	});
-	
+
 	Log.d(TAG, "onCreate");
     }
 
@@ -69,14 +79,21 @@ public class LoginActivity extends Activity {
 	UserLoginRequest request = new UserLoginRequest(username, password);
 	contentManager.execute(request, new UserRequestListener());
     }
-    
-    private void startChatActivity() {
-	Intent intent = new Intent(getBaseContext(), ContactsActivity.class);
-	
-	/* fake data */
-	intent.putExtra("username", "contact.myhoster@gmail.com");
-	intent.putExtra("password", "contact12345");
 
+    private void storeSharedPreferences(HashMap<String, String> properties) {
+	SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+
+	for (Entry<String, String> entry : properties.entrySet()) {
+	    String key = entry.getKey();
+	    String value = entry.getValue();
+	    editor.putString(key, value);
+	}
+
+	editor.commit();
+    }
+
+    private void startContactListActivity() {
+	Intent intent = new Intent(getBaseContext(), ContactsActivity.class);
 	startActivity(intent);
 	finish();
     }
@@ -96,29 +113,12 @@ public class LoginActivity extends Activity {
 
 	    Toast.makeText(LoginActivity.this, "LOGIN SUCCESS!", Toast.LENGTH_LONG).show();
 
-	    startChatActivity();
+	    HashMap<String, String> preferences = new HashMap<String, String>();
+	    preferences.put(PreferencesHelper.Username, username);
+	    preferences.put(PreferencesHelper.Password, password);
+	    storeSharedPreferences(preferences);
+
+	    startContactListActivity();
 	}
     }
-
-    // private class UserLogoutRequestListener implements
-    // RequestListener<MessageResource> {
-    // @Override
-    // public void onRequestFailure(SpiceException e) {
-    // Toast.makeText(LoginActivity.this,
-    // "Error during request: " + e.getMessage(),
-    // Toast.LENGTH_LONG).show();
-    // }
-    //
-    // @Override
-    // public void onRequestSuccess(MessageResource message) {
-    // if (message == null) {
-    // Toast.makeText(LoginActivity.this, "LOGOUT ERROR!",
-    // Toast.LENGTH_LONG).show();
-    // return;
-    // }
-    //
-    // Toast.makeText(LoginActivity.this, "LOGOUT SUCCESS!",
-    // Toast.LENGTH_LONG).show();
-    // }
-    // }
 }

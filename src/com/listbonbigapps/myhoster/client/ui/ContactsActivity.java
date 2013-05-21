@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -35,11 +36,25 @@ public class ContactsActivity extends Activity {
     private Button BtConnect;
     private Button BtDisconnect;
     private ListView LvUsers;
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 	// Inflate the menu; this adds items to the action bar if it is present.
 	getMenuInflater().inflate(R.menu.contacts, menu);
+	return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+	int menuItemId = item.getItemId();
+
+	switch (menuItemId) {
+	case R.id.action_settings:
+	    Intent intent = new Intent(getApplicationContext(), PreferencesActivity.class);
+	    startActivity(intent);
+	    break;
+	}
+
 	return true;
     }
 
@@ -76,7 +91,7 @@ public class ContactsActivity extends Activity {
 		    Intent intent = new Intent(getApplicationContext(), UserChatActivity.class);
 		    intent.putExtra("user", user);
 		    startActivity(intent);
-		    //finish();
+		    // finish();
 		}
 	    }
 	});
@@ -157,6 +172,7 @@ public class ContactsActivity extends Activity {
 
     private void disconnectXmpp() {
 	if (hasService()) {
+	    clearUsers();
 	    service.disconnectXmpp();
 	}
     }
@@ -187,6 +203,11 @@ public class ContactsActivity extends Activity {
 	    }
 	}
 
+	refreshUsers();
+    }
+    
+    private void clearUsers() {
+	this.users.clear();
 	refreshUsers();
     }
 

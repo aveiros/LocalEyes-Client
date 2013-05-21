@@ -34,7 +34,7 @@ public class UserChatActivity extends Activity {
     private ArrayAdapter<String> messagesAdapter;
 
     private ListView LvMessages;
-    private EditText Etmessage;
+    private EditText EtMessage;
     private Button BtSend;
     
     @Override
@@ -59,7 +59,7 @@ public class UserChatActivity extends Activity {
 	BtSend.setOnClickListener(new OnClickListener() {
 	    @Override
 	    public void onClick(View v) {
-		String msg = Etmessage.getText().toString().trim();
+		String msg = EtMessage.getText().toString().trim();
 		if (msg != null && !msg.equals("")) {
 		    sendMessage(msg);
 		    clearText();
@@ -67,7 +67,7 @@ public class UserChatActivity extends Activity {
 	    }
 	});
 
-	Etmessage = (EditText) findViewById(R.id.chat_input);
+	EtMessage = (EditText) findViewById(R.id.chat_input);
 
 	LvMessages = (ListView) findViewById(R.id.chat_messages);
 	this.messages = new ArrayList<String>();
@@ -156,7 +156,7 @@ public class UserChatActivity extends Activity {
     }
 
     private void clearText() {
-	this.Etmessage.setText("");
+	this.EtMessage.setText("");
     }
 
     private void doBindService() {

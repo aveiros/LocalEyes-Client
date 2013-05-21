@@ -4,11 +4,12 @@
     <string name="app_name">myHoster</string>
     <string name="action_settings">Settings</string>
     <string name="service_name">myHosterService</string>
-    
     <string name="login_username">Username</string>
     <string name="login_password">Password:</string>
     <string name="title_activity_login">myHoster</string>
     <string name="title_activity_contacts">myHoster</string>
     <string name="title_activity_user_chat">myHoster</string>
-    
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>
