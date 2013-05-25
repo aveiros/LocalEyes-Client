@@ -4,7 +4,7 @@ public class ServerHelper {
 	private static String ServerIp = "myhoster.dyndns.info";
 	private static String ServerPort = "8080";
 	private static String ServerRestUrl = "http://" + ServerIp + ":"
-			+ ServerPort + "/myHoster/rest";
+			+ ServerPort + "/hoster/rest";
 
 	public static String getServerIp() {
 		return ServerIp;
