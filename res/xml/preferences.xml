@@ -10,7 +10,7 @@
             android:title="Username" />
         <EditTextPreference
             android:key="pref_password"
-            android:summary="Enter your password"
+            android:summary="Enter your password1"
             android:title="Password" />
     </PreferenceCategory>
 
