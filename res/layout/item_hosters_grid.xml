@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="90dp"    
+    android:layout_height="90dp" >
+    
+    <ImageView
+        android:id="@+id/grid_image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"        
+        android:background="@drawable/thumb_1"
+        android:layout_alignParentTop="true" />	    
+    
+	<View
+    android:id="@+id/myRectangleView"
+    android:layout_width="5dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/rectangle"/>       
+    
+    <TextView 
+        android:id="@+id/grid_label_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:textColor="#ffffff"
+        android:background="#90000000"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/grid_image"
+        android:textSize="8dp"
+        android:singleLine="true"
+        android:text="Joanna"
+        android:ellipsize="marquee" />
+
+    <TextView
+        android:id="@+id/grid_label_address"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/grid_label_name"
+        android:layout_alignParentLeft="true"
+        android:background="#90000000"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:paddingBottom="0dp"
+        android:paddingTop="2dp"
+        android:singleLine="true"
+        android:text="Joanna"
+        android:textColor="#ffffff"
+        android:textSize="12dp" />
+
+</RelativeLayout>

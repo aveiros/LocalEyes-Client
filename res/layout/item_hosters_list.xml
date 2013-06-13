@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/list_item_bg" >
+
+    <ImageView
+        android:id="@+id/grid_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/thumb_1"
+        android:focusable="false" />
+
+    <Button
+        android:id="@+id/button_request"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/list_item_bg"
+        android:focusable="false"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="REQUEST"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:id="@+id/layoutHostLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutHostName"
+        android:layout_toRightOf="@+id/grid_image"
+        android:orientation="horizontal" >
+		
+		<ImageView
+            android:id="@+id/map_marker_location"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:focusable="false"
+            android:src="@drawable/map_marker_16" />
+
+        <TextView
+            android:id="@+id/grid_label_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="CAMPO GRANDE, LISBOA"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layoutHostDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutHostLocation"
+        android:layout_toRightOf="@+id/grid_image"        
+        android:orientation="horizontal" >
+        
+		<ImageView
+	        android:id="@+id/distance_icon"
+	        android:layout_width="12dp"
+	        android:layout_height="12dp"
+	        android:focusable="false"	
+	        android:gravity="center_vertical"        
+	        android:src="@drawable/geo_space_16" />  
+	                
+		<TextView
+	        android:id="@+id/grid_label_distance"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:focusable="false"
+	        android:gravity="center_vertical"
+	        android:text="200m"
+	        android:textColor="@color/white"
+	        android:textSize="10sp"  />
+      
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutHostName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/layoutHostLocation"
+        android:layout_alignTop="@+id/grid_image"
+        android:gravity="left"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/grid_label_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="JOANNA TEIXEIRA"
+            android:textColor="@color/white"
+            android:textSize="@dimen/largeText"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/labelCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/button_request"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:text="20€"
+        android:textSize="20sp"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

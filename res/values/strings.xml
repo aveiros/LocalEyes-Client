@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">myHoster</string>
-    <string name="action_settings">Settings</string>
     <string name="service_name">myHosterService</string>
     <string name="login_username">Username</string>
     <string name="login_password">Password:</string>
@@ -11,5 +9,24 @@
     <string name="title_activity_user_chat">myHoster</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="hello_world">Hello world!</string>
+    
+    <string name="app_name">LocalEyes</string>
+    <string name="action_settings">Settings</string>
+    <string name="ab_tab_title1">Search</string>
+    <string name="ab_tab_title2">Account</string>
+
+    <color name="white">#ffffff</color>
+    <color name="light_grey">#BABABA</color>
+    <color name="medium_grey">#BDBDBD</color>
+    <color name="lemon_green">#60ab22</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="pink">#FF00B3</color>
+    <color name="purple">#DC4FFF</color>
+    <color name="lemon">#E5FF00</color>
+    <color name="orange">#FFD033</color>
+    <color name="red">#FF4D4D</color>
+
+    <dimen name="smallText">12sp</dimen>
+    <dimen name="largeText">16sp</dimen>
 
 </resources>

@@ -21,8 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="8dip"
-        android:singleLine="true"
-        android:text="admin" />
+        android:singleLine="true" />
 
     <TextView
         android:id="@+id/label_password"
@@ -37,8 +36,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:padding="8dip"
-        android:singleLine="true"
-        android:text="12345" />
+        android:singleLine="true" />
 
     <Button
         android:id="@+id/login"

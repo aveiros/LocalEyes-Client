@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+         
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|left" >
+
+            <ImageView
+                android:id="@+id/profilePic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"                
+                android:src="@drawable/map_marker_48" />
+
+            <TextView
+                android:id="@+id/location_title_street"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/profilePic"
+                android:fontFamily="Roboto"
+                android:text="Campo Grande"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/location_title_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/location_title_street"
+                android:layout_toRightOf="@+id/profilePic"
+                android:fontFamily="Roboto"
+                android:text="Lisboa"
+                android:textAllCaps="true"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <GridView
+        android:id="@+id/grid_view1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        >
+        <TextView 
+            android:text="More distant people.."
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+    </FrameLayout>
+    
+    <GridView
+        android:id="@+id/grid_view2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
+    
+    
+
+</LinearLayout>
