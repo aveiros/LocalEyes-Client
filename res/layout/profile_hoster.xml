@@ -1,87 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/lisbon_bg_3" >
-    
+    android:layout_height="match_parent" >
+
     <LinearLayout
         android:id="@+id/profileLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/super_light_grey"
         android:orientation="horizontal" >
-        
+
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/list_item_bg"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"            
             android:gravity="center_horizontal"
             android:orientation="horizontal" >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent" >
-
-                <ImageView
-                    android:id="@+id/profilePic"
-                    android:layout_width="74dp"
-                    android:layout_height="74dp"
-                    android:src="@drawable/thumb_2" />
-
-                <!-- RATING STARS -->
-
-                <ImageView
-                    android:id="@+id/imageRatingStar1"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_below="@+id/profilePic"
-                    android:src="@drawable/ic_rating" />
-
-                <ImageView
-                    android:id="@+id/imageRatingStar2"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_alignTop="@+id/imageRatingStar1"
-                    android:layout_centerHorizontal="true"
-                    android:layout_toRightOf="@+id/imageRatingStar1"
-                    android:src="@drawable/ic_rating" />
-
-                <ImageView
-                    android:id="@+id/imageRatingStar3"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_alignTop="@+id/imageRatingStar2"
-                    android:layout_centerHorizontal="true"
-                    android:layout_toRightOf="@+id/imageRatingStar2"
-                    android:src="@drawable/ic_rating" />
-
-                <ImageView
-                    android:id="@+id/imageRatingStar4"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_alignTop="@+id/imageRatingStar3"
-                    android:layout_centerHorizontal="true"
-                    android:layout_toRightOf="@+id/imageRatingStar3"
-                    android:src="@drawable/ic_rating" />
-
-                <ImageView
-                    android:id="@+id/imageRatingStar5"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_alignTop="@+id/imageRatingStar4"
-                    android:layout_centerHorizontal="true"
-                    android:layout_toRightOf="@+id/imageRatingStar4"
-                    android:src="@drawable/ic_rating" />
-            </RelativeLayout>
+          <ImageView
+              android:id="@+id/profilePic"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:scaleType="centerCrop"
+              android:src="@drawable/thumb_3" />
+    
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="4"
-            android:background="@drawable/list_item_bg"
+            android:layout_weight="3"           
             android:gravity="center_horizontal"
             android:orientation="horizontal" >
 
@@ -89,166 +39,211 @@
                 android:id="@+id/relativeLayout1"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/list_item_bg" >
-
-                <TextView
-                    android:id="@+id/profileTimeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/profile_status"
-                    android:layout_below="@+id/profile_status"
-                    android:text="TODAY: "
-                    android:textColor="#ffffff"
-                    android:textSize="@dimen/smallText"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/profileTimeTitleTomorrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/profile_status"
-                    android:layout_below="@+id/profileTimeTitle"
-                    android:layout_toRightOf="@+id/profileTimeTitle"
-                    android:text="TOMORROW:  "
-                    android:textColor="#ffffff"
-                    android:textSize="@dimen/smallText"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/profile_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/profile_status"
-                    android:layout_toRightOf="@+id/profileTimeTitleTomorrow"
-                    android:text="From 14:00 to 20:00"
-                    android:textColor="#ffffff"
-                    android:textSize="@dimen/smallText" />
-
-                <ImageView
-                    android:id="@+id/iconAvailable"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_available" />
-
-                <TextView
-                    android:id="@+id/profile_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/iconAvailable"
-                    android:layout_centerInParent="true"
-                    android:layout_toRightOf="@+id/iconAvailable"
-                    android:text="AVAILABLE"
-                    android:textColor="#ffffff"
-                    android:textSize="@dimen/largeText"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/profileTimeTomorrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/profileTimeTitleTomorrow"
-                    android:layout_toRightOf="@+id/profileTimeTitleTomorrow"
-                    android:text="From 16:00 to 18:00"
-                    android:textColor="#ffffff"
-                    android:textSize="@dimen/smallText" />
-
-                <TextView
-                    android:id="@+id/profileCost"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/profileCostTitle"
-                    android:layout_toRightOf="@+id/profileCostTitle"
-                    android:text="25€"
-                    android:textColor="#ffffff"
-                    android:textSize="@dimen/largeText" />
-
-                <TextView
-                    android:id="@+id/profileCostTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/profile_status"
-                    android:layout_below="@+id/profileTimeTitleTomorrow"
-                    android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@+id/profileTimeTitle"
-                    android:text="PRICE:  "
-                    android:textColor="#ffffff"
-                    android:textSize="@dimen/largeText"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                 >
                 
-        </LinearLayout>        
-        
-        
-    </LinearLayout>
-
- 
-    <LinearLayout
-        android:id="@+id/contactButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/interestsList"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal" >
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="10"
-            android:background="@drawable/list_item_bg"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/buttonCall"
+			<TextView
+                   android:id="@+id/profileLocalName"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentTop="true"
+                   android:layout_marginBottom="5dp"
+                   android:background="@color/light_grey"
+                   android:text="JOAO FONSECA"
+                   android:textColor="@color/dark_grey"
+                   android:textStyle="bold"
+                   android:paddingBottom="2dp"
+                   android:textSize="@dimen/largeText" />                   
+                
+          	 <TextView
+                android:id="@+id/profileLocalFeedbackTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_call"
-                android:text="CALL MOBILE"
-                android:textColor="#FFFfFF"
+                android:layout_below="@+id/profileLocalName"
+                android:drawableLeft="@drawable/ic_service_feedback"
+                android:text="FEEDBACK: "
+                android:textColor="@color/super_dark_grey"                
                 android:textSize="@dimen/smallText" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" >
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="10"
-            android:background="@drawable/list_item_bg"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/buttonMsg"
+                
+          	 <TextView
+                android:id="@+id/profileLocalTextViewStatusTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_sms"
-                android:text="SEND MESSAGE"
-                android:textColor="#FFFfFF"
-                android:textSize="12sp" />
+                android:drawableLeft="@drawable/ic_service_local"
+                android:layout_below="@+id/profileLocalStarsRating"
+                android:text="STATUS: "                
+                android:textColor="@color/super_dark_grey"
+                android:textSize="@dimen/smallText" />
+
+          	 <TextView
+          	     android:id="@+id/profileLocalTextViewStatus"
+          	     android:layout_width="wrap_content"
+          	     android:layout_height="wrap_content"
+          	     android:layout_below="@+id/profileLocalStarsRating"
+          	     android:layout_toRightOf="@+id/profileLocalTextViewStatusTitle"
+          	     android:text="ON-LINE"
+          	     android:textColor="@color/dark_grey"
+          	     android:textSize="@dimen/smallText" />
+          	 
+          	 <TextView
+                android:id="@+id/profileLocalTextViewLocationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_service_location"
+                android:layout_below="@+id/profileLocalTextViewStatusTitle"
+                android:text="LOCATION: "                
+                android:textColor="@color/super_dark_grey"
+                android:textSize="@dimen/smallText" />
+
+          	 <TextView
+          	     android:id="@+id/profileLocalTextViewLocation"
+          	     android:layout_width="wrap_content"
+          	     android:layout_height="wrap_content"
+          	     android:layout_below="@+id/profileLocalTextViewStatusTitle"
+          	     android:layout_toRightOf="@+id/profileLocalTextViewLocationTitle"
+          	     android:text="LISBON - ROSSIO"
+          	     android:textColor="@color/dark_grey"
+          	     android:textSize="@dimen/smallText" />    
+          	     
+          	 <TextView
+                android:id="@+id/profileLocalTextViewLocationDistanceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_around_me"
+                android:layout_below="@+id/profileLocalTextViewLocationTitle"
+                android:text="DISTANCE FROM YOU: "                
+                android:textColor="@color/super_dark_grey"
+                android:textSize="@dimen/smallText" />
+
+          	 <TextView
+          	     android:id="@+id/profileLocalTextViewDistance"
+          	     android:layout_width="wrap_content"
+          	     android:layout_height="wrap_content"
+          	     android:layout_below="@+id/profileLocalTextViewLocationTitle"
+          	     android:layout_toRightOf="@+id/profileLocalTextViewLocationDistanceTitle"
+          	     android:text="200m"
+          	     android:textColor="@color/dark_grey"
+          	     android:textSize="@dimen/smallText" />             	 	 
+
+          	 <LinearLayout
+          	     android:id="@+id/profileLocalStarsRating"
+          	     android:layout_width="wrap_content"
+          	     android:layout_height="wrap_content"
+          	     android:layout_alignTop="@+id/profileLocalFeedbackTitle"
+          	     android:layout_toRightOf="@+id/profileLocalFeedbackTitle"
+          	     android:gravity="center_horizontal"
+          	     android:orientation="horizontal" >
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <TextView
+          	         android:id="@+id/textView4"
+          	         android:layout_width="wrap_content"
+          	         android:layout_height="wrap_content"
+          	         android:text="(429)"
+          	         android:textColor="@color/medium_grey"
+          	         android:textSize="12sp" />
+          	 </LinearLayout>
+
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+    
+	<LinearLayout
+        android:id="@+id/contactButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"                
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/layoutTabBook"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/buttonCall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/blue_button"
+                    android:drawableLeft="@drawable/ic_book"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"                    
+                    android:text="BOOK NOW"
+                    android:textColor="#FFFfFF"
+                    android:textSize="@dimen/menuNotificationBoxText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutTabContact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/buttonCall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/blue_button"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"                    
+                    android:drawableLeft="@drawable/ic_sms"
+                    android:text="ASK QUESTION"
+                    android:textColor="#FFFfFF"
+					android:textSize="@dimen/menuNotificationBoxText" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>    
 
     <LinearLayout
-        android:id="@+id/interestsList"
+        android:id="@+id/layoutLocalLocation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/profileLayout"
-        android:layout_marginTop="3dp"
+        android:layout_height="wrap_content"        
         android:background="@drawable/list_item_bg"
         android:orientation="vertical" >
 
@@ -256,106 +251,286 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="5dp"
+            android:background="@color/lemon_green"
             android:gravity="left"
             android:orientation="horizontal" >
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_squares" />
-
+            
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:gravity="center"
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/super_dark_grey"	            
+	            android:orientation="horizontal" >   
+	            
+	            <ImageView
+	                android:id="@+id/imageView3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/ic_location" />	            
+	            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="3"
+	            
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/lemon_green"
+	            android:gravity="left"
+	            android:orientation="horizontal" >   
+	            
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_gravity="center_vertical"
-                android:text="OFFERED ACTIVITIES"
+                android:text="LOCATION"
                 android:textColor="@color/white"
-                android:textSize="@dimen/largeText"
-                android:textStyle="bold" />
+                android:textSize="@dimen/menuNotificationBoxText" />           
+	            
+	        </LinearLayout>	        
+
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
             android:gravity="left"
             android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/list_item_bg"
-                android:text="MUSEUMS"
-                android:textColor="@color/yellow"
-                android:textSize="12sp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/list_item_bg"
-                android:text="GOLF"
-                android:textColor="@color/red"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="AROUND"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/largeText" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/list_item_bg"
-                android:text="CASINO"
-                android:textColor="@color/pink"
-                android:textSize="12sp" />
-        </LinearLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"                
+                android:layout_weight="3"
+                android:background="@color/white"
+                android:gravity="left"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="left"
-            android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/closebyPoiName"
+                    android:text="*It&apos;s around 200M from you."
+                    android:textColor="@color/light_grey"
+                    android:textSize="12sp" />
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/list_item_bg"
-                android:text="LEVADA WALKS"
-                android:textColor="@color/orange"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/closebyPoiName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="LISBON (OLD CITY CENTER)"
+                    android:textColor="@color/medium_grey" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/list_item_bg"
-                android:text="BOAT RIDE"
-                android:textColor="@color/lemon"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/list_item_bg"
-                android:text="SURF"
-                android:textColor="@color/purple"
-                android:textSize="12sp" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+					android:layout_centerInParent="true"
+                    android:src="@drawable/ic_map" />
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/interestsList"        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/lemon_green"
+            android:gravity="left"
+            android:orientation="horizontal" >
+            
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:gravity="center"
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/super_dark_grey"	            
+	            android:orientation="horizontal" >   
+	            
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_sun" />            
+	            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="3"	            
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/lemon_green"
+	            android:gravity="left"
+	            android:orientation="horizontal" >   
+	            
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="ACTIVITIES"
+                android:textColor="@color/white"
+                android:textSize="@dimen/menuNotificationBoxText" />          
+	            
+	        </LinearLayout>	               
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="left"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="10h-16h"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/largeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"                
+                android:layout_weight="3"
+                android:background="@color/white"
+                android:gravity="left"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="I can show you the GARDENS around the Island. During the visit to the gardens I can take you also to the best tea houses"
+                    android:textColor="@color/medium_grey"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
     
+ <LinearLayout
+        android:id="@+id/latesteFeedbackList"        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/lemon_green"
+            android:gravity="left"
+            android:orientation="horizontal" >
+            
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:gravity="center"
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/super_dark_grey"	            
+	            android:orientation="horizontal" >
+
+	            <ImageView
+	                android:id="@+id/imageView3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/ic_check" />
+	            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="3"	            
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/lemon_green"
+	            android:gravity="left"
+	            android:orientation="horizontal" >   
+	            
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="LATEST FEEDBACK"
+                android:textColor="@color/white"
+                android:textSize="@dimen/menuNotificationBoxText" />          
+	            
+	        </LinearLayout>	               
+        </LinearLayout>
+        
+    <ListView
+        android:id="@android:id/list_feedback"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="90dp"
+        android:divider="@drawable/std_bg_grey"
+        android:dividerHeight="2dp"
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="40dp"
+        tools:listitem="@layout/item_feedback_list" >
+    </ListView>
+
+        
+    </LinearLayout>    
 
     <!-- FEEDBACK LIST -->
 
-</RelativeLayout>
+</LinearLayout>

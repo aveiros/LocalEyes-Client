@@ -2,13 +2,14 @@
 <resources>
 
     <string name="service_name">myHosterService</string>
-    <string name="login_username">Username</string>
-    <string name="login_password">Password:</string>
+    <string name="login_username">USERNAME</string>
+    <string name="login_password">PASSWORD</string>
     <string name="title_activity_login">myHoster</string>
     <string name="title_activity_contacts">myHoster</string>
     <string name="title_activity_user_chat">myHoster</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="alternative_login_text">OR ALTERNATIVELY</string>
     
     <string name="app_name">LocalEyes</string>
     <string name="action_settings">Settings</string>
@@ -17,16 +18,21 @@
 
     <color name="white">#ffffff</color>
     <color name="light_grey">#BABABA</color>
-    <color name="medium_grey">#BDBDBD</color>
-    <color name="lemon_green">#60ab22</color>
+    <color name="super_light_grey">#EDEDED</color>
+    <color name="fancy_blue">#3d9ce4</color>
+    <color name="fancy_red">#da4747</color> 
+    <color name="medium_grey">#949494</color>
+    <color name="dark_grey">#52585C</color>
+    <color name="lemon_green">#5eab1f</color>
     <color name="yellow">#FFFF00</color>
     <color name="pink">#FF00B3</color>
     <color name="purple">#DC4FFF</color>
     <color name="lemon">#E5FF00</color>
     <color name="orange">#FFD033</color>
     <color name="red">#FF4D4D</color>
+    <color name="super_dark_grey">#282a2b</color>
+    
 
-    <dimen name="smallText">12sp</dimen>
-    <dimen name="largeText">16sp</dimen>
+
 
 </resources>

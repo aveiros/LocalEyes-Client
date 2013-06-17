@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+ <LinearLayout
+        android:id="@+id/layoutMenuMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="left"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/super_light_grey"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_warning" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:background="@color/fancy_red"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textViewServiceStatus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="PENDING ACCEPTANCE"
+                android:textColor="@color/white"
+                android:textSize="@dimen/menuNotificationBoxText" />
+        </LinearLayout>
+    </LinearLayout>        
+
+    <LinearLayout
+        android:id="@+id/profileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/super_light_grey"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"            
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+          <ImageView
+              android:id="@+id/profilePic"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:scaleType="centerCrop"
+              android:src="@drawable/thumb_3" />
+    
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"           
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                 >
+                
+			<TextView
+                   android:id="@+id/profileLocalName"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentTop="true"
+                   android:layout_marginBottom="5dp"
+                   android:background="@color/light_grey"
+                   android:text="JOAO FONSECA"
+                   android:textColor="@color/dark_grey"
+                   android:textStyle="bold"
+                   android:paddingBottom="2dp"
+                   android:textSize="@dimen/largeText" />                   
+                
+          	 <TextView
+                android:id="@+id/profileLocalFeedbackTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profileLocalName"
+                android:drawableLeft="@drawable/ic_service_feedback"
+                android:text="FEEDBACK: "
+                android:textColor="@color/super_dark_grey"                
+                android:textSize="@dimen/smallText" />
+                
+          	 <TextView
+                android:id="@+id/profileLocalTextViewStatusTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_service_local"
+                android:layout_below="@+id/profileLocalStarsRating"
+                android:text="STATUS: "                
+                android:textColor="@color/super_dark_grey"
+                android:textSize="@dimen/smallText" />
+
+          	 <TextView
+          	     android:id="@+id/profileLocalTextViewStatus"
+          	     android:layout_width="wrap_content"
+          	     android:layout_height="wrap_content"
+          	     android:layout_below="@+id/profileLocalStarsRating"
+          	     android:layout_toRightOf="@+id/profileLocalTextViewStatusTitle"
+          	     android:text="ON-LINE"
+          	     android:textColor="@color/dark_grey"
+          	     android:textSize="@dimen/smallText" />
+          	 
+          	 <TextView
+                android:id="@+id/profileLocalTextViewLocationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_service_location"
+                android:layout_below="@+id/profileLocalTextViewStatusTitle"
+                android:text="LOCATION: "                
+                android:textColor="@color/super_dark_grey"
+                android:textSize="@dimen/smallText" />
+
+          	 <TextView
+          	     android:id="@+id/profileLocalTextViewLocation"
+          	     android:layout_width="wrap_content"
+          	     android:layout_height="wrap_content"
+          	     android:layout_below="@+id/profileLocalTextViewStatusTitle"
+          	     android:layout_toRightOf="@+id/profileLocalTextViewLocationTitle"
+          	     android:text="LISBON - ROSSIO"
+          	     android:textColor="@color/dark_grey"
+          	     android:textSize="@dimen/smallText" />    
+          	     
+          	 <TextView
+                android:id="@+id/profileLocalTextViewLocationDistanceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_around_me"
+                android:layout_below="@+id/profileLocalTextViewLocationTitle"
+                android:text="DISTANCE FROM YOU: "                
+                android:textColor="@color/super_dark_grey"
+                android:textSize="@dimen/smallText" />
+
+          	 <TextView
+          	     android:id="@+id/profileLocalTextViewDistance"
+          	     android:layout_width="wrap_content"
+          	     android:layout_height="wrap_content"
+          	     android:layout_below="@+id/profileLocalTextViewLocationTitle"
+          	     android:layout_toRightOf="@+id/profileLocalTextViewLocationDistanceTitle"
+          	     android:text="200m"
+          	     android:textColor="@color/dark_grey"
+          	     android:textSize="@dimen/smallText" />             	 	 
+
+          	 <LinearLayout
+          	     android:id="@+id/profileLocalStarsRating"
+          	     android:layout_width="wrap_content"
+          	     android:layout_height="wrap_content"
+          	     android:layout_alignTop="@+id/profileLocalFeedbackTitle"
+          	     android:layout_toRightOf="@+id/profileLocalFeedbackTitle"
+          	     android:gravity="center_horizontal"
+          	     android:orientation="horizontal" >
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <ImageView
+          	         android:id="@+id/star"
+          	         android:layout_width="14dp"
+          	         android:layout_height="14dp"
+          	         android:src="@drawable/ic_feedback_stare" />
+
+          	     <TextView
+          	         android:id="@+id/textView4"
+          	         android:layout_width="wrap_content"
+          	         android:layout_height="wrap_content"
+          	         android:text="(429)"
+          	         android:textColor="@color/medium_grey"
+          	         android:textSize="12sp" />
+          	 </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    
+	<LinearLayout
+        android:id="@+id/contactButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:background="@color/super_light_grey"      
+        android:layout_marginBottom="10dp"        
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/lemon_green"
+            android:gravity="left"
+            android:orientation="horizontal" >	             
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/layoutTabBook"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/buttonServiceCall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/blue_button"
+                    android:drawableLeft="@drawable/ic_call"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="CALL PHONE"
+                    android:textColor="#FFFfFF"
+                    android:textSize="@dimen/menuNotificationBoxText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutTabContact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/buttonServiceSendMessage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/blue_button"
+                    android:drawableLeft="@drawable/ic_sms"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="SEND MESSAGE"
+                    android:textColor="#FFFfFF"
+					android:textSize="@dimen/menuNotificationBoxText" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>    
+
+    <LinearLayout
+        android:id="@+id/layoutLocalLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"        
+        android:background="@drawable/list_item_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/lemon_green"
+            android:gravity="left"
+            android:orientation="horizontal" >
+            
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:gravity="center"
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/super_dark_grey"	            
+	            android:orientation="horizontal" >   
+	            
+	            <ImageView
+	                android:id="@+id/imageView3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/ic_location" />	            
+	            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="3"
+	            
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/lemon_green"
+	            android:gravity="left"
+	            android:orientation="horizontal" >   
+	            
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="MEETING POINT"
+                android:textColor="@color/white"
+                android:textSize="@dimen/menuNotificationBoxText" />           
+	            
+	        </LinearLayout>	        
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="left"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="NEAR"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/largeText" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"                
+                android:layout_weight="3"
+                android:background="@color/white"
+                android:gravity="left"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp" >
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/closebyPoiName"
+                    android:text="*It&apos;s around 200M from you."
+                    android:textColor="@color/medium_grey"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/closebyPoiName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="TORRE DE BELEM (MUSEUM)"
+                    android:textColor="@color/dark_grey" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+					android:layout_centerInParent="true"
+                    android:src="@drawable/ic_map" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/interestsList"        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/lemon_green"
+            android:gravity="left"
+            android:orientation="horizontal" >
+            
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:gravity="center"
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/super_dark_grey"	            
+	            android:orientation="horizontal" >   
+	            
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_sun" />            
+	            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="3"	            
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/lemon_green"
+	            android:gravity="left"
+	            android:orientation="horizontal" >   
+	            
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="ACTIVITIES"
+                android:textColor="@color/white"
+                android:textSize="@dimen/menuNotificationBoxText" />          
+	            
+	        </LinearLayout>	               
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="left"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="10h-16h"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/largeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"                
+                android:layout_weight="3"
+                android:background="@color/white"
+                android:gravity="left"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="I can show you the GARDENS around the Island. During the visit to the gardens I can take you also to the best tea houses"
+                    android:textColor="@color/medium_grey"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+   </LinearLayout>
+        
+    <LinearLayout
+        android:id="@+id/lastMessageLayout"        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/lemon_green"
+            android:gravity="left"
+            android:orientation="horizontal" >
+            
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:gravity="center"
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/super_dark_grey"	            
+	            android:orientation="horizontal" >   
+	            
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_chat" />            
+	            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="0dp"
+	            android:layout_weight="3"	            
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center_vertical"
+	            android:background="@color/lemon_green"
+	            android:gravity="left"
+	            android:orientation="horizontal" >   
+	            
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="LAST MESSAGE"
+                android:textColor="@color/white"
+                android:textSize="@dimen/menuNotificationBoxText" />          
+	            
+	        </LinearLayout>	               
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="left"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="09:40"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/largeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"                
+                android:layout_weight="3"
+                android:background="@color/white"
+                android:gravity="left"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="I have a yellow shirt. I'm already there"
+                    android:textColor="@color/medium_grey"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>    
+
+</LinearLayout>

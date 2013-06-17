@@ -21,7 +21,7 @@ public class SlidingMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	setHasOptionsMenu(true);
-	View view = inflater.inflate(R.layout.sliding_menu, container, false);
+	View view = inflater.inflate(R.layout.sliding_menu_traveller, container, false);
 
 	Button BtLogOut = (Button) view.findViewById(R.id.bt_logout);
 	BtLogOut.setOnClickListener(new OnClickListener() {

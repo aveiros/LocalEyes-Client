@@ -35,6 +35,7 @@ public class TravellerActivity extends SlidingFragmentActivity implements HostLi
     public static Context appContext;
     private MenuItem menuItem;
     private SuggestionsAdapter mSuggestionsAdapter;
+    
     // Progress Bar -------------------------------
     private int mProgress = 100;
     final Handler mHandler = new Handler();
@@ -86,8 +87,7 @@ public class TravellerActivity extends SlidingFragmentActivity implements HostLi
 	if (fragment == null) {
 	    FragmentTransaction ft = fm.beginTransaction();
 	    ft.add(R.id.fragment_content, new HostListFragment());
-	    ft.commit(); // Make sure you call commit or your Fragment will not
-			 // be added.
+	    ft.commit();
 	}
 
 	// ACTION BAR
