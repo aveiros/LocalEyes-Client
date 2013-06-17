@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChatActivity" >
+    
+<LinearLayout
+        android:id="@+id/messaging"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/contactButtons"
+        android:background="@drawable/list_item_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/lemon_green"
+            android:gravity="left"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_sms" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="SERVICES"
+                android:textColor="@color/white"
+                android:textSize="@dimen/largeText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/servicesListLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+            
+			<ListView android:id="@+id/services"
+				android:layout_width="fill_parent" 	
+				android:background="@color/super_light_grey"			
+				android:layout_height="0dip"
+				android:layout_weight="1" 
+				android:paddingBottom="0.5dp"
+				android:transcriptMode="normal"
+				android:stackFromBottom="true"
+				android:fadingEdge="none" 
+				
+				android:fastScrollEnabled="true" 
+				android:smoothScrollbar="false"
+				tools:listitem="@layout/item_service_list"
+				android:focusable="true"/>
+                    
+        </LinearLayout>
+    </LinearLayout>    
+
+
+
+
+</LinearLayout>

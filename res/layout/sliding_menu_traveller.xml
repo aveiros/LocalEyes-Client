@@ -364,29 +364,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|center_horizontal"
                     android:gravity="center_horizontal"
-                    android:text="LAST SERVICES"
+                    android:text="SERVICES"
                     android:textColor="@color/dark_grey"
                     android:textSize="@dimen/menuEntryTitleText" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.5"
-                android:background="@color/lemon_green"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp" >
-                
-					<TextView
-                        android:id="@+id/TextView01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="NEW FEEDBACK"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/menuNotificationBoxText" />                
-                
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -446,7 +426,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1.5"
-                    android:background="@color/lemon_green"
+                    android:background="@color/dark_grey"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="5dp" >
