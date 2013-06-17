@@ -20,6 +20,7 @@ import com.lisbonbigapps.myhoster.client.adapter.SuggestionsAdapter;
 import com.lisbonbigapps.myhoster.client.fragment.HostListFragment;
 import com.lisbonbigapps.myhoster.client.fragment.HostProfileFragment;
 import com.lisbonbigapps.myhoster.client.fragment.SlidingMenuFragment;
+import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.R;
 import com.octo.android.robospice.JacksonSpringAndroidSpiceService;
 import com.octo.android.robospice.SpiceManager;
@@ -28,6 +29,8 @@ public class TravellerActivity extends SlidingFragmentActivity implements HostLi
 
     private final SpiceManager contentManager = new SpiceManager(JacksonSpringAndroidSpiceService.class);
 
+    private UserResource account;
+
     private static final String[] COLUMNS = { BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1 };
 
     private int mTitleRes;
@@ -35,7 +38,7 @@ public class TravellerActivity extends SlidingFragmentActivity implements HostLi
     public static Context appContext;
     private MenuItem menuItem;
     private SuggestionsAdapter mSuggestionsAdapter;
-    
+
     // Progress Bar -------------------------------
     private int mProgress = 100;
     final Handler mHandler = new Handler();
@@ -174,6 +177,14 @@ public class TravellerActivity extends SlidingFragmentActivity implements HostLi
 
     public SpiceManager getContentManager() {
 	return contentManager;
+    }
+
+    public UserResource getAccount() {
+	return account;
+    }
+
+    public void setAccount(UserResource account) {
+	this.account = account;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.lisbonbigapps.myhoster.client.ui;
 
+import com.lisbonbigapps.myhoster.client.app.App;
 import com.lisbonbigapps.myhoster.client.request.UserLoginRequest;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.util.PreferencesHelper;
@@ -110,6 +111,9 @@ public class SplashActivity extends Activity {
 	    if (user == null || user.getUsername() == null) {
 		return;
 	    }
+	    
+	    App app = (App) getApplication();
+	    app.setUser(user);
 
 	    authenticationSuccess = true;
 	    authenticating = false;

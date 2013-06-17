@@ -3,6 +3,7 @@ package com.lisbonbigapps.myhoster.client.fragment;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -104,14 +105,24 @@ public class HostListFragment extends SherlockListFragment {
     private class HostsAroundRequestListener implements RequestListener<ListUserResource> {
 	@Override
 	public void onRequestFailure(SpiceException e) {
+	    Context context = getActivity();
+	    if (context == null) {
+		return;
+	    }
+	    
 	    HosterModel[] closeByhosts = new HosterModel[0];
-	    ListAdapter listAdapter = new HostersModelListAdapter(getActivity(), closeByhosts);
+	    ListAdapter listAdapter = new HostersModelListAdapter(context, closeByhosts);
 	    setListAdapter(listAdapter);
 	}
 
 	@Override
 	public void onRequestSuccess(ListUserResource listUsers) {
 	    if (listUsers == null) {
+		return;
+	    }
+	    
+	    Context context = getActivity();
+	    if (context == null) {
 		return;
 	    }
 
@@ -122,7 +133,7 @@ public class HostListFragment extends SherlockListFragment {
 	    }
 
 	    HosterModel[] closeByhosts = hosts.toArray(new HosterModel[hosts.size()]);
-	    ListAdapter listAdapter = new HostersModelListAdapter(getActivity(), closeByhosts);
+	    ListAdapter listAdapter = new HostersModelListAdapter(context, closeByhosts);
 	    setListAdapter(listAdapter);
 	}
     }

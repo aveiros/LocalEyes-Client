@@ -1,5 +1,7 @@
 package com.lisbonbigapps.myhoster.client.fragment;
 
+import com.lisbonbigapps.myhoster.client.app.App;
+import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.ui.LoginActivity;
 import com.lisbonbigapps.myhoster.client.util.PreferencesHelper;
 import com.lisbonbigapps.myhoster.client.R;
@@ -17,7 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.TextView;
 
 public class SlidingMenuFragment extends Fragment {
     @Override
@@ -65,7 +67,32 @@ public class SlidingMenuFragment extends Fragment {
 	    }
 	});
 
+	fillView(view);
 	return view;
+    }
+
+    private void fillView(View view) {
+	if (view == null) {
+	    return;
+	}
+
+	App app = (App) getActivity().getApplication();
+	if (app == null) {
+	    return;
+	}
+
+	UserResource user = app.getUser();
+	if (user == null) {
+	    return;
+	}
+
+	TextView textName = (TextView) view.findViewById(R.id.profileMenuName);
+	TextView textFeedback = (TextView) view.findViewById(R.id.profileLocalTextViewFeedback);
+	TextView textStatus = (TextView) view.findViewById(R.id.profileMenuTextViewStatus);
+
+	textName.setText(user.getName());
+	textStatus.setText("Online");
+	textFeedback.setText("(" + user.getService().getVotes() + ")");
     }
 
     protected void onHostsAround() {

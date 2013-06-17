@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
+
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -25,6 +26,7 @@ import com.octo.android.robospice.request.listener.RequestListener;
 
 public class HostProfileFragment extends SherlockFragment {
     private long userId;
+    private View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class HostProfileFragment extends SherlockFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 	super.onActivityCreated(savedInstanceState);
-	
+
 	TravellerActivity activity = (TravellerActivity) this.getActivity();
 	UserRequest request = new UserRequest(this.userId);
 	activity.getContentManager().execute(request, new UserRequestListener());
@@ -68,17 +70,17 @@ public class HostProfileFragment extends SherlockFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	super.onCreateView(inflater, container, savedInstanceState);
-	View v = inflater.inflate(R.layout.profile_hoster, container, false);
+	this.view = inflater.inflate(R.layout.profile_hoster, container, false);
 
-//	Button sendMessage = (Button) v.findViewById(R.id);
-//	sendMessage.setOnClickListener(new OnClickListener() {
-//	    @Override
-//	    public void onClick(View v) {
-//		onSendMessage();
-//	    }
-//	});
+	// Button sendMessage = (Button) v.findViewById(R.id);
+	// sendMessage.setOnClickListener(new OnClickListener() {
+	// @Override
+	// public void onClick(View v) {
+	// onSendMessage();
+	// }
+	// });
 
-	Button makeCall = (Button) v.findViewById(R.id.buttonCall);
+	Button makeCall = (Button) view.findViewById(R.id.buttonCall);
 	makeCall.setOnClickListener(new OnClickListener() {
 	    @Override
 	    public void onClick(View v) {
@@ -86,7 +88,7 @@ public class HostProfileFragment extends SherlockFragment {
 	    }
 	});
 
-	return v;
+	return view;
     }
 
     private void onSendMessage() {
@@ -98,9 +100,24 @@ public class HostProfileFragment extends SherlockFragment {
 	// make a phone call
     }
 
-    private void drawProfile(UserResource user) {
-	String title = String.format("<font color='#ffffff'>%s</font>", user.getName());
-	getSherlockActivity().getSupportActionBar().setTitle(Html.fromHtml(title));
+    private void fillView(UserResource user) {
+	TextView textName = (TextView) view.findViewById(R.id.profileLocalName);
+	TextView textFeedback = (TextView) view.findViewById(R.id.textView4);
+	TextView textStatus = (TextView) view.findViewById(R.id.profileLocalTextViewStatus);
+	TextView textLocation = (TextView) view.findViewById(R.id.profileLocalTextViewLocation);
+	TextView textDistance = (TextView) view.findViewById(R.id.profileLocalTextViewDistance);
+	TextView textDescription = (TextView) view.findViewById(R.id.textView2);
+	TextView textPOI = (TextView) view.findViewById(R.id.closebyPoiName);
+	TextView textPOIdistance = (TextView) view.findViewById(R.id.textView5);
+
+	textName.setText(user.getName());
+	textFeedback.setText("(" + user.getService().getVotes() + ")");
+	textStatus.setText("Online");
+	textLocation.setText("");
+	textDistance.setText("");
+	textDescription.setText(user.getService().getDescription() + "I can show you the GARDENS around the Island. During the visit to the gardens I can take you also to the best tea houses");
+	textPOI.setText("" + "LISBON (OLD CITY CENTER)");
+	textPOIdistance.setText("" + "Its around 200M from you.");
     }
 
     private class UserRequestListener implements RequestListener<UserResource> {
@@ -114,7 +131,7 @@ public class HostProfileFragment extends SherlockFragment {
 		return;
 	    }
 
-	    drawProfile(user);
+	    fillView(user);
 	}
     }
 }

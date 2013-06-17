@@ -2,10 +2,12 @@ package com.lisbonbigapps.myhoster.client.fragment;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,8 +94,13 @@ public class ServicesFragment extends SherlockListFragment {
     private class ServicesRequestListener implements RequestListener<ListServiceResource> {
 	@Override
 	public void onRequestFailure(SpiceException e) {
+	    Context context = getActivity();
+	    if (context == null) {
+		return;
+	    }
+
 	    ServiceResource[] services = new ServiceResource[0];
-	    ListAdapter listAdapter = new ServiceModelListAdapter(getActivity(), services);
+	    ListAdapter listAdapter = new ServiceModelListAdapter(context, services);
 	    setListAdapter(listAdapter);
 	}
 
@@ -103,8 +110,13 @@ public class ServicesFragment extends SherlockListFragment {
 		return;
 	    }
 
+	    Context context = getActivity();
+	    if (context == null) {
+		return;
+	    }
+
 	    ServiceResource[] services = list.toArray(new ServiceResource[list.size()]);
-	    ListAdapter listAdapter = new ServiceModelListAdapter(getActivity(), services);
+	    ListAdapter listAdapter = new ServiceModelListAdapter(context, services);
 	    setListAdapter(listAdapter);
 	}
     }
