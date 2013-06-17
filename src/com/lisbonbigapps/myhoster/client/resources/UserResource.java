@@ -1,11 +1,17 @@
 package com.lisbonbigapps.myhoster.client.resources;
 
+import java.util.List;
+
 public class UserResource extends RootResource {
     long id;
     String username;
     String name;
     String photo;
+    List<String> interests;
+
     LocationResource location;
+
+    ServiceProfileResource service;
 
     public String getUsername() {
 	return username;
@@ -45,5 +51,21 @@ public class UserResource extends RootResource {
 
     public void setPhoto(String photo) {
 	this.photo = photo;
+    }
+
+    public List<String> getInterests() {
+	return interests;
+    }
+
+    public void setInterests(List<String> interests) {
+	this.interests = interests;
+    }
+
+    public ServiceProfileResource getService() {
+	return service;
+    }
+
+    public void setService(ServiceProfileResource service) {
+	this.service = service;
     }
 }

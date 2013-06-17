@@ -65,7 +65,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/labelCost"
+        android:id="@+id/grid_label_fee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/button_request"

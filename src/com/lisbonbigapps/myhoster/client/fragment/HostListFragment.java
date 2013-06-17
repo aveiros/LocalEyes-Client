@@ -4,14 +4,10 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListFragment;
@@ -121,7 +117,7 @@ public class HostListFragment extends SherlockListFragment {
 
 	    ArrayList<HosterModel> hosts = new ArrayList<HosterModel>();
 	    for (UserResource user : listUsers) {
-		HosterModel instance = new HosterModel(user.getId(), user.getName(), "", R.drawable.thumb_1, 300, 1001, 3);
+		HosterModel instance = new HosterModel(user.getId(), user.getName(), user.getService().getFee(), "", R.drawable.thumb_1, 300, 1001, 3);
 		hosts.add(instance);
 	    }
 

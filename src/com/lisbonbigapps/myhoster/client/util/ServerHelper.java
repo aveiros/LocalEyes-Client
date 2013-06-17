@@ -1,12 +1,11 @@
 package com.lisbonbigapps.myhoster.client.util;
 
 public class ServerHelper {
-    // public server rest host: "localeyes.no-ip.org";
-    private static final String RestHost = "192.168.1.67";
-    private static final String RestPort = "8080";
+    private static final String RestHost = "localeyes.no-ip.org";
+    private static final String RestPort = "80";
     private static final String RestUrl = "http://" + RestHost + ":" + RestPort + "/local/rest";
 
-    private static final String XmppHost = "192.168.1.91";
+    private static final String XmppHost = "localeyes.no-ip.org";
     private static final int XmppPort = 5222;
     private static final String XmppService = "localhost";
 

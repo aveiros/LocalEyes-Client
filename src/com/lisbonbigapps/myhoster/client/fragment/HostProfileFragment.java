@@ -70,13 +70,13 @@ public class HostProfileFragment extends SherlockFragment {
 	super.onCreateView(inflater, container, savedInstanceState);
 	View v = inflater.inflate(R.layout.profile_hoster, container, false);
 
-	Button sendMessage = (Button) v.findViewById(R.id.buttonMsg);
-	sendMessage.setOnClickListener(new OnClickListener() {
-	    @Override
-	    public void onClick(View v) {
-		onSendMessage();
-	    }
-	});
+//	Button sendMessage = (Button) v.findViewById(R.id);
+//	sendMessage.setOnClickListener(new OnClickListener() {
+//	    @Override
+//	    public void onClick(View v) {
+//		onSendMessage();
+//	    }
+//	});
 
 	Button makeCall = (Button) v.findViewById(R.id.buttonCall);
 	makeCall.setOnClickListener(new OnClickListener() {
