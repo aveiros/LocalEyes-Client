@@ -1,6 +1,9 @@
 package com.lisbonbigapps.myhoster.client.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,13 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.lisbonbigapps.myhoster.client.request.ServiceCreateRequest;
 import com.lisbonbigapps.myhoster.client.request.UserRequest;
+import com.lisbonbigapps.myhoster.client.resources.ServiceResource;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
+import com.lisbonbigapps.myhoster.client.ui.LoginActivity;
 import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
 import com.lisbonbigapps.myhoster.client.R;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -115,7 +122,25 @@ public class HostProfileFragment extends SherlockFragment {
     }
 
     private void onBookNow() {
-	// start booking activity
+	AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+	builder.setMessage("You are about to book with a host! Are you sure you wanna book??").setTitle("Book Now");
+	builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+	    public void onClick(DialogInterface dialog, int id) {
+		createBook();
+	    }
+	});
+
+	builder.setNegativeButton(R.string.no, null);
+
+	AlertDialog dialog = builder.create();
+	dialog.show();
+    }
+
+    private void createBook() {
+	TravellerActivity activity = getBaseActivity(TravellerActivity.class);
+	ServiceCreateRequest request = new ServiceCreateRequest(userId);
+	activity.getContentManager().execute(request, new ServiceCreateRequestListener());
     }
 
     private void fillView(UserResource user) {
@@ -157,6 +182,22 @@ public class HostProfileFragment extends SherlockFragment {
 	    }
 
 	    fillView(user);
+	}
+    }
+
+    private class ServiceCreateRequestListener implements RequestListener<ServiceResource> {
+	@Override
+	public void onRequestFailure(SpiceException e) {
+	    Toast.makeText(getActivity(), "An error occurred while booking!", Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void onRequestSuccess(ServiceResource service) {
+	    if (service == null) {
+		return;
+	    }
+	    
+	    Toast.makeText(getActivity(), "Service booked! Please check your booking services!", Toast.LENGTH_SHORT).show();
 	}
     }
 }
