@@ -1,13 +1,10 @@
 package com.lisbonbigapps.myhoster.client.fragment;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +15,10 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.lisbonbigapps.myhoster.client.R;
-import com.lisbonbigapps.myhoster.client.adapter.HostersModelListAdapter;
 import com.lisbonbigapps.myhoster.client.adapter.ServiceModelListAdapter;
-import com.lisbonbigapps.myhoster.client.model.HosterModel;
 import com.lisbonbigapps.myhoster.client.request.ServicesRequest;
 import com.lisbonbigapps.myhoster.client.resources.ListServiceResource;
 import com.lisbonbigapps.myhoster.client.resources.ServiceResource;
-import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
@@ -78,8 +72,6 @@ public class ServicesFragment extends SherlockListFragment {
 	    transaction.replace(R.id.fragment_content, serviceFragment);
 	    transaction.commit();
 	}
-
-	// mCallback.onHostSelected(id);
     }
 
     @Override

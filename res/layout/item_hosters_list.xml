@@ -5,14 +5,14 @@
     android:layout_marginTop="10dp" >
 
     <LinearLayout
-        android:id="@+id/layoutLocalPicture"
+        android:id="@+id/contactPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
         android:orientation="horizontal" >  
         
 	    <ImageView
-	        android:id="@+id/grid_image"
+	        android:id="@+id/imageViewContact"
 	        android:layout_width="50dp"
 	        android:layout_height="50dp"
 	        android:layout_centerVertical="true"
@@ -47,8 +47,8 @@
         android:id="@+id/layoutHostName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/layoutLocalPicture"
-        android:layout_alignTop="@+id/layoutLocalPicture"
+		android:layout_toRightOf="@+id/contactPicture"
+        android:layout_alignTop="@+id/contactPicture"
         android:gravity="left"
         android:orientation="horizontal" >
 

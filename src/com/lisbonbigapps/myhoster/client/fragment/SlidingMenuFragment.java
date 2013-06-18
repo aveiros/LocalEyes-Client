@@ -117,9 +117,9 @@ public class SlidingMenuFragment extends Fragment {
 	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
 
 	if (fragment != null) {
-	    Fragment ft = new ServicesFragment();
+	    Fragment fg = new ServicesFragment();
 	    FragmentTransaction transaction = manager.beginTransaction();
-	    transaction.replace(R.id.fragment_content, ft);
+	    transaction.replace(R.id.fragment_content, fg);
 	    transaction.commit();
 	}
     }

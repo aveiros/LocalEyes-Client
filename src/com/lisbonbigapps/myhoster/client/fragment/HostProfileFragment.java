@@ -1,6 +1,6 @@
 package com.lisbonbigapps.myhoster.client.fragment;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
@@ -18,13 +17,13 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.lisbonbigapps.myhoster.client.request.UserRequest;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
-import com.lisbonbigapps.myhoster.client.ui.ContactsActivity;
 import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
 import com.lisbonbigapps.myhoster.client.R;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
 public class HostProfileFragment extends SherlockFragment {
+    private UserResource user;
     private long userId;
     private View view;
 
@@ -72,35 +71,56 @@ public class HostProfileFragment extends SherlockFragment {
 	super.onCreateView(inflater, container, savedInstanceState);
 	this.view = inflater.inflate(R.layout.profile_hoster, container, false);
 
-	// Button sendMessage = (Button) v.findViewById(R.id);
-	// sendMessage.setOnClickListener(new OnClickListener() {
-	// @Override
-	// public void onClick(View v) {
-	// onSendMessage();
-	// }
-	// });
-
-	Button makeCall = (Button) view.findViewById(R.id.buttonCall);
-	makeCall.setOnClickListener(new OnClickListener() {
+	View v = view.findViewById(R.id.buttonBook);
+	v.setOnClickListener(new OnClickListener() {
 	    @Override
 	    public void onClick(View v) {
-		onMakePhoneCall();
+		onBookNow();
+	    }
+	});
+
+	v = view.findViewById(R.id.buttonContact);
+	v.setOnClickListener(new OnClickListener() {
+	    @Override
+	    public void onClick(View v) {
+		onContact();
 	    }
 	});
 
 	return view;
     }
 
-    private void onSendMessage() {
-	Intent intent = new Intent(getSherlockActivity().getBaseContext(), ContactsActivity.class);
-	startActivity(intent);
+    private void onContact() {
+	FragmentManager manager = getActivity().getSupportFragmentManager();
+	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
+
+	if (fragment != null) {
+	    String username = getBaseActivity(TravellerActivity.class).getService().getUsername();
+
+	    String user1 = (username == null ? "" : username);
+	    // TODO: HARD CODED
+	    String user2 = user.getUsername() + "@localhost";
+
+	    Bundle args = new Bundle();
+	    args.putString("user1", user1);
+	    args.putString("user2", user2);
+
+	    Fragment fg = new MessagingFragment();
+	    fg.setArguments(args);
+
+	    FragmentTransaction transaction = manager.beginTransaction();
+	    transaction.replace(R.id.fragment_content, fg);
+	    transaction.commit();
+	}
     }
 
-    private void onMakePhoneCall() {
-	// make a phone call
+    private void onBookNow() {
+	// start booking activity
     }
 
     private void fillView(UserResource user) {
+	this.user = user;
+
 	TextView textName = (TextView) view.findViewById(R.id.profileLocalName);
 	TextView textFeedback = (TextView) view.findViewById(R.id.textView4);
 	TextView textStatus = (TextView) view.findViewById(R.id.profileLocalTextViewStatus);
@@ -118,6 +138,11 @@ public class HostProfileFragment extends SherlockFragment {
 	textDescription.setText(user.getService().getDescription() + "I can show you the GARDENS around the Island. During the visit to the gardens I can take you also to the best tea houses");
 	textPOI.setText("" + "LISBON (OLD CITY CENTER)");
 	textPOIdistance.setText("" + "Its around 200M from you.");
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T extends Activity> T getBaseActivity(Class<T> clazz) {
+	return (T) this.getActivity();
     }
 
     private class UserRequestListener implements RequestListener<UserResource> {

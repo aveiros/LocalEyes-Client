@@ -15,7 +15,7 @@ import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.lisbonbigapps.myhoster.client.adapter.HostersModelListAdapter;
+import com.lisbonbigapps.myhoster.client.adapter.HostsModelListAdapter;
 import com.lisbonbigapps.myhoster.client.model.HosterModel;
 import com.lisbonbigapps.myhoster.client.request.HostsAroundRequest;
 import com.lisbonbigapps.myhoster.client.resources.ListUserResource;
@@ -111,7 +111,7 @@ public class HostListFragment extends SherlockListFragment {
 	    }
 	    
 	    HosterModel[] closeByhosts = new HosterModel[0];
-	    ListAdapter listAdapter = new HostersModelListAdapter(context, closeByhosts);
+	    ListAdapter listAdapter = new HostsModelListAdapter(context, closeByhosts);
 	    setListAdapter(listAdapter);
 	}
 
@@ -133,7 +133,7 @@ public class HostListFragment extends SherlockListFragment {
 	    }
 
 	    HosterModel[] closeByhosts = hosts.toArray(new HosterModel[hosts.size()]);
-	    ListAdapter listAdapter = new HostersModelListAdapter(context, closeByhosts);
+	    ListAdapter listAdapter = new HostsModelListAdapter(context, closeByhosts);
 	    setListAdapter(listAdapter);
 	}
     }

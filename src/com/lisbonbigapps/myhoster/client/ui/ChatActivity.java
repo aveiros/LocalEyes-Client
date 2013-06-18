@@ -224,8 +224,12 @@ public class ChatActivity extends Activity {
 	private void onRosterContactPresenceChanged(Intent intent) {
 	    RosterContact entry = intent.getParcelableExtra("data");
 	    if (entry != null) {
-		String local = service.account();
+		String local = service.getUsername();
 		String remote = remoteUser;
+
+		if (local == null) {
+		    return;
+		}
 
 		if (entry.getUsername().equals(local)) {
 		    Log.d(TAG, "local user changed status");

@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class HostersModelListAdapter extends BaseAdapter {
+public class HostsModelListAdapter extends BaseAdapter {
 
     private class ViewHolder {
 	public TextView textAddress;
@@ -20,18 +20,18 @@ public class HostersModelListAdapter extends BaseAdapter {
 	public ImageView photoThumbnail;
     }
 
-    private HosterModel[] mHosters;
+    private HosterModel[] mHosts;
     private LayoutInflater mInflater;
 
-    public HostersModelListAdapter(Context context, HosterModel[] locations) {
+    public HostsModelListAdapter(Context context, HosterModel[] locations) {
 	mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	mHosters = locations;
+	mHosts = locations;
     }
 
     @Override
     public int getCount() {
-	if (mHosters != null) {
-	    return mHosters.length;
+	if (mHosts != null) {
+	    return mHosts.length;
 	}
 
 	return 0;
@@ -39,8 +39,8 @@ public class HostersModelListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-	if (mHosters != null && position >= 0 && position < getCount()) {
-	    return mHosters[position];
+	if (mHosts != null && position >= 0 && position < getCount()) {
+	    return mHosts[position];
 	}
 
 	return null;
@@ -48,8 +48,8 @@ public class HostersModelListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-	if (mHosters != null && position >= 0 && position < getCount()) {
-	    return mHosters[position].id;
+	if (mHosts != null && position >= 0 && position < getCount()) {
+	    return mHosts[position].id;
 	}
 
 	return 0;
@@ -69,15 +69,15 @@ public class HostersModelListAdapter extends BaseAdapter {
 	    viewHolder.textAddress = (TextView) view.findViewById(R.id.grid_label_address);
 	    viewHolder.textDistance = (TextView) view.findViewById(R.id.grid_label_distance);
 	    viewHolder.textFee = (TextView) view.findViewById(R.id.grid_label_fee);
-	    viewHolder.photoThumbnail = (ImageView) view.findViewById(R.id.grid_image);
-	    viewHolder.photoThumbnail = (ImageView) view.findViewById(R.id.grid_image);
+	    viewHolder.photoThumbnail = (ImageView) view.findViewById(R.id.imageViewContact);
+	    viewHolder.photoThumbnail = (ImageView) view.findViewById(R.id.imageViewContact);
 
 	    view.setTag(viewHolder);
 	} else {
 	    viewHolder = (ViewHolder) view.getTag();
 	}
 
-	HosterModel hosterModel = mHosters[position];
+	HosterModel hosterModel = mHosts[position];
 
 	viewHolder.photoThumbnail.setImageResource(hosterModel.picture);
 	viewHolder.textAddress.setText(hosterModel.address);

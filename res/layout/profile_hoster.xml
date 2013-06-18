@@ -201,7 +201,7 @@
                 android:orientation="vertical" >
 
                 <Button
-                    android:id="@+id/buttonCall"
+                    android:id="@+id/buttonBook"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -225,7 +225,7 @@
                 android:orientation="vertical" >
 
                 <Button
-                    android:id="@+id/buttonCall"
+                    android:id="@+id/buttonContact"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
