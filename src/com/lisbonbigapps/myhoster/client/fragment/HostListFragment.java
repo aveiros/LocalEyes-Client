@@ -3,22 +3,19 @@ package com.lisbonbigapps.myhoster.client.fragment;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.lisbonbigapps.myhoster.client.adapter.HostersModelListAdapter;
+import com.lisbonbigapps.myhoster.client.adapter.HostsModelListAdapter;
 import com.lisbonbigapps.myhoster.client.model.HosterModel;
 import com.lisbonbigapps.myhoster.client.request.HostsAroundRequest;
 import com.lisbonbigapps.myhoster.client.resources.ListUserResource;
@@ -108,8 +105,13 @@ public class HostListFragment extends SherlockListFragment {
     private class HostsAroundRequestListener implements RequestListener<ListUserResource> {
 	@Override
 	public void onRequestFailure(SpiceException e) {
+	    Context context = getActivity();
+	    if (context == null) {
+		return;
+	    }
+	    
 	    HosterModel[] closeByhosts = new HosterModel[0];
-	    ListAdapter listAdapter = new HostersModelListAdapter(getActivity(), closeByhosts);
+	    ListAdapter listAdapter = new HostsModelListAdapter(context, closeByhosts);
 	    setListAdapter(listAdapter);
 	}
 
@@ -118,15 +120,20 @@ public class HostListFragment extends SherlockListFragment {
 	    if (listUsers == null) {
 		return;
 	    }
+	    
+	    Context context = getActivity();
+	    if (context == null) {
+		return;
+	    }
 
 	    ArrayList<HosterModel> hosts = new ArrayList<HosterModel>();
 	    for (UserResource user : listUsers) {
-		HosterModel instance = new HosterModel(user.getId(), user.getName(), "", R.drawable.thumb_1, 300, 1001, 3);
+		HosterModel instance = new HosterModel(user.getId(), user.getName(), user.getService().getFee(), "", R.drawable.thumb_1, 300, 1001, 3);
 		hosts.add(instance);
 	    }
 
 	    HosterModel[] closeByhosts = hosts.toArray(new HosterModel[hosts.size()]);
-	    ListAdapter listAdapter = new HostersModelListAdapter(getActivity(), closeByhosts);
+	    ListAdapter listAdapter = new HostsModelListAdapter(context, closeByhosts);
 	    setListAdapter(listAdapter);
 	}
     }

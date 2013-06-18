@@ -201,7 +201,7 @@
                 android:orientation="vertical" >
 
                 <Button
-                    android:id="@+id/buttonCall"
+                    android:id="@+id/buttonBook"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -225,7 +225,7 @@
                 android:orientation="vertical" >
 
                 <Button
-                    android:id="@+id/buttonCall"
+                    android:id="@+id/buttonContact"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -515,7 +515,11 @@
         </LinearLayout>
         
     <ListView
+<<<<<<< HEAD
         android:id="@android:id/list"
+=======
+        android:id="@+id/list_feedback"
+>>>>>>> 5de74f498fd5f0368161322b20c36f88fa42a623
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:columnWidth="90dp"

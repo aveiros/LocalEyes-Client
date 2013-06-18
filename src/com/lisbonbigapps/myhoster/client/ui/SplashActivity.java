@@ -1,5 +1,6 @@
 package com.lisbonbigapps.myhoster.client.ui;
 
+import com.lisbonbigapps.myhoster.client.app.App;
 import com.lisbonbigapps.myhoster.client.request.UserLoginRequest;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.util.PreferencesHelper;
@@ -24,12 +25,12 @@ public class SplashActivity extends Activity {
     private boolean authenticating = true;
     private boolean authenticationSuccess = false;
     private int splashDuration = 0;
-    private int splashTime = 500;
+    private int splashTime = 4000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
-	setContentView(R.layout.activity_welcome);
+	setContentView(R.layout.splash_screen);
 
 	this.splashInit();
     }
@@ -110,6 +111,9 @@ public class SplashActivity extends Activity {
 	    if (user == null || user.getUsername() == null) {
 		return;
 	    }
+	    
+	    App app = (App) getApplication();
+	    app.setUser(user);
 
 	    authenticationSuccess = true;
 	    authenticating = false;

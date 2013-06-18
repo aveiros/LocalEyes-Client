@@ -1,5 +1,6 @@
 package com.lisbonbigapps.myhoster.client.ui;
 
+import com.lisbonbigapps.myhoster.client.app.App;
 import com.lisbonbigapps.myhoster.client.request.UserLoginRequest;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.util.PreferencesHelper;
@@ -99,6 +100,9 @@ public class LoginActivity extends Activity {
 
 	    editor.putString(PreferencesHelper.Password, password).commit();
 	    editor.commit();
+	    
+	    App app = (App) getApplication();
+	    app.setUser(user);
 
 	    finish();
 	    Intent intent = new Intent(getBaseContext(), TravellerActivity.class);

@@ -6,11 +6,9 @@
     tools:context=".ChatActivity" >
     
 <LinearLayout
-        android:id="@+id/services"
+        android:id="@+id/messages"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/contactButtons"
         android:background="@drawable/list_item_bg"
         android:orientation="vertical" >
 
@@ -33,13 +31,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="SERVICES"
+                android:text="MESSAGES"
                 android:textColor="@color/white"
                 android:textSize="@dimen/largeText" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/servicesListLayout"
+            android:id="@+id/messagesListLayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical" >
@@ -55,7 +53,7 @@
 				
 				android:fastScrollEnabled="true" 
 				android:smoothScrollbar="false"
-				tools:listitem="@layout/item_service_list"
+				tools:listitem="@layout/item_message_list"
 				android:focusable="true"/>
                     
         </LinearLayout>

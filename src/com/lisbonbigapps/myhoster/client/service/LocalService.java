@@ -50,7 +50,7 @@ public class LocalService extends Service {
 	this.config = new ConnectionConfiguration(host, port, service);
 	this.config.setReconnectionAllowed(true);
 	// SASLAuthentication.supportSASLMechanism("PLAIN", 0);
-	// Roster.setDefaultSubscriptionMode(Roster.SubscriptionMode.accept_all);
+	Roster.setDefaultSubscriptionMode(Roster.SubscriptionMode.accept_all);
 	ProviderManager.getInstance().addIQProvider("vCard", "vcard-temp", new VCardProvider());
 
 	this.connection = new XMPPConnection(this.config);
@@ -295,7 +295,7 @@ public class LocalService extends Service {
 	Log.d(TAG, "XMPP CONNECT END");
     }
 
-    public String account() {
+    public String getUsername() {
 	if (!this.connection.isAuthenticated()) {
 	    return null;
 	}
@@ -466,6 +466,34 @@ public class LocalService extends Service {
 
 	Presence presence = new Presence(Presence.Type.unavailable);
 	this.setPresence(presence);
+    }
+
+    public boolean hasContact(String username) {
+	Roster roster = this.connection.getRoster();
+	if (roster != null) {
+
+	}
+
+	return false;
+    }
+
+    public boolean addContact(String username) {
+	Roster roster = this.connection.getRoster();
+	if (roster != null) {
+	    try {
+		RosterEntry entry = roster.getEntry(username);
+		if (entry == null) {
+		    roster.createEntry(username, null, null);
+		}
+
+		return true;
+	    } catch (XMPPException e) {
+		e.printStackTrace();
+		return false;
+	    }
+	}
+
+	return false;
     }
 
     private void setPresence(Presence presence) {
