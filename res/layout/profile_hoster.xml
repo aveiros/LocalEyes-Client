@@ -188,9 +188,8 @@
                 android:id="@+id/layoutTabBook"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"                
-                android:layout_weight="1"
-                android:background="@color/super_light_grey"
-                android:layout_marginRight="@dimen/layout_separator_margin"
+                android:layout_weight="4"
+                android:background="@color/super_light_grey"                
                 android:gravity="center_horizontal"
                 android:orientation="vertical" >
 
@@ -205,12 +204,22 @@
                     android:textColor="#FFFfFF"
                     android:textSize="@dimen/menuNotificationBoxText" />
             </LinearLayout>
-
+            
             <LinearLayout
                 android:id="@+id/layoutTabContact"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"                
                 android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" />
+                            
+
+            <LinearLayout
+                android:id="@+id/layoutTabContact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"                
+                android:layout_weight="4"
                 android:background="@color/super_light_grey"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" >
