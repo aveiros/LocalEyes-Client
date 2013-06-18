@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"    
-    android:background="@drawable/lisbon_bg_21"
+    android:padding="10dp"
+    android:background="@drawable/lisbon_bg_2"
     android:orientation="vertical"
     tools:context=".LoginActivity" >
 
@@ -26,13 +27,12 @@
         android:id="@+id/layoutLoginUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"    
-        android:background="@drawable/list_item_bg"    
         android:orientation="vertical"
         android:paddingTop="0.5dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
            
             android:gravity="left"
             android:orientation="horizontal" >
@@ -83,14 +83,14 @@
         android:id="@+id/layoutLoginButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/list_item_bg"
+ 
         android:orientation="vertical"
         android:paddingTop="0.5dp"
         android:paddingBottom="0.5dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
           
             android:gravity="left"
             android:orientation="horizontal" >
@@ -98,7 +98,6 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_gravity="center"
                 android:layout_weight="2"
                 
                 android:gravity="center"
@@ -142,8 +141,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_margin="15dp" >
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
 
         <Button
             android:id="@+id/Button01"
@@ -155,13 +156,12 @@
             android:textSize="@dimen/menuButtonText" />
 			
 			<TextView
-                android:id="@+id/label_username"
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/smallText"
-                android:textColor="@color/white"
-                android:text="@string/alternative_login_text" />
+			    android:id="@+id/label_username"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text=""
+			    android:textColor="@color/white"
+			    android:textSize="@dimen/smallText" />
 
 			<Button
 			    android:id="@+id/login"

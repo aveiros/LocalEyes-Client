@@ -9,6 +9,7 @@
         android:id="@+id/listTitleLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@color/lemon_green">
         
 	    <LinearLayout
@@ -57,8 +58,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:columnWidth="90dp"
-        android:divider="@drawable/std_bg_grey"
-        android:dividerHeight="2dp"
+        android:dividerHeight="5dp"
         android:gravity="center"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
