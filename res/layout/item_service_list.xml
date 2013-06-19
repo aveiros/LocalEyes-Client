@@ -15,8 +15,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="2"
-                android:background="@color/fancy_blue"
+                android:layout_weight="2"                
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
 
@@ -26,8 +25,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|center_horizontal"
                     android:gravity="center_horizontal"
-                    android:text="COMPLETED"
-                    android:textColor="@color/white"
+                    android:text="COMPLETE"
+                    android:textColor="@color/dark_grey"
                     android:textSize="@dimen/smallText" />
             </LinearLayout>
 
@@ -44,7 +43,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/smallText"
-                    android:drawableLeft="@drawable/ic_service_time"
                     android:textColor="@color/dark_grey"
                     android:text="16/06/13 14:00" />
 
@@ -53,18 +51,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/smallText"
-                    android:drawableLeft="@drawable/ic_service_local"
                     android:textColor="@color/dark_grey"
-                    android:text="JOAO PAULO" />
+                    android:text="Joao Paulo" />
 
                 <TextView
                     android:id="@+id/textViewServiceFeedback"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/smallText"
-                    android:drawableLeft="@drawable/ic_service_location"
                     android:textColor="@color/dark_grey"
-                    android:text="LISBON (CAMPO GRANDE)" />
+                    android:text="Lisbon (Campo Grande)" />
                 
             </LinearLayout>
             

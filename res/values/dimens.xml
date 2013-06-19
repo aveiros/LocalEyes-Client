@@ -7,7 +7,11 @@
     <dimen name="layout_separator_margin">10dp</dimen>
     <dimen name="button_height">25dp</dimen>
     
+ 	<dimen name="list_divider_height">5dp</dimen>    
+    
+    
     <dimen name="small_title_icon">20dp</dimen>
+    <dimen name="list_text_size">12sp</dimen>
 	
 	
 	<dimen name="slidingmenu_offset">60dp</dimen>
