@@ -24,9 +24,12 @@ import com.lisbonbigapps.myhoster.client.database.Message;
 import com.lisbonbigapps.myhoster.client.database.MessagesDataSource;
 import com.lisbonbigapps.myhoster.client.model.ContactMessageModel;
 import com.lisbonbigapps.myhoster.client.service.LocalService;
-import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
+import com.lisbonbigapps.myhoster.client.ui.MainActivity;
 
 public class MessagesFragment extends SherlockListFragment {
+    static final String TAG = MessagesFragment.class.toString();
+    static final int AB_REFRESH = 1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class MessagesFragment extends SherlockListFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 	super.onCreateOptionsMenu(menu, inflater);
+	menu.add(0, AB_REFRESH, 0, "Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
 	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
 	actionBar.setTitle("Messages");
@@ -52,8 +56,49 @@ public class MessagesFragment extends SherlockListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 	super.onActivityCreated(savedInstanceState);
+	this.getMessages();
+    }
 
-	TravellerActivity activity = this.getFragmentActivity();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+	switch (item.getItemId()) {
+	case AB_REFRESH:
+	    this.getMessages();
+	    return true;
+	default:
+	    return super.onOptionsItemSelected(item);
+	}
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+	super.onListItemClick(l, v, position, id);
+
+	FragmentManager manager = getActivity().getSupportFragmentManager();
+	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
+
+	if (fragment != null) {
+	    ContactMessageModel contact = (ContactMessageModel) getListAdapter().getItem(position);
+	    String username = getFragmentActivity().getService().getUsername();
+
+	    String user1 = (username == null ? "" : username);
+	    String user2 = contact.getUsername();
+
+	    Bundle args = new Bundle();
+	    args.putString("user1", user1);
+	    args.putString("user2", user2);
+
+	    Fragment fg = new MessagingFragment();
+	    fg.setArguments(args);
+
+	    FragmentTransaction transaction = manager.beginTransaction();
+	    transaction.replace(R.id.fragment_content, fg);
+	    transaction.commit();
+	}
+    }
+
+    private void getMessages() {
+	MainActivity activity = this.getFragmentActivity();
 	if (activity == null) {
 	    return;
 	}
@@ -63,13 +108,12 @@ public class MessagesFragment extends SherlockListFragment {
 	    return;
 	}
 
-	// dataSource.deleteAllMessages();
 	List<Message> messages = dataSource.getAllMessages();
 	fillView(messages);
     }
 
     private void fillView(List<Message> messages) {
-	TravellerActivity activity = this.getFragmentActivity();
+	MainActivity activity = this.getFragmentActivity();
 	if (activity == null) {
 	    return;
 	}
@@ -112,39 +156,7 @@ public class MessagesFragment extends SherlockListFragment {
 	setListAdapter(listAdapter);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-	return true;
-    }
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-	super.onListItemClick(l, v, position, id);
-
-	FragmentManager manager = getActivity().getSupportFragmentManager();
-	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
-
-	if (fragment != null) {
-	    ContactMessageModel contact = (ContactMessageModel) getListAdapter().getItem(position);
-	    String username = getFragmentActivity().getService().getUsername();
-
-	    String user1 = (username == null ? "" : username);
-	    String user2 = contact.getUsername();
-
-	    Bundle args = new Bundle();
-	    args.putString("user1", user1);
-	    args.putString("user2", user2);
-
-	    Fragment fg = new MessagingFragment();
-	    fg.setArguments(args);
-
-	    FragmentTransaction transaction = manager.beginTransaction();
-	    transaction.replace(R.id.fragment_content, fg);
-	    transaction.commit();
-	}
-    }
-
-    public TravellerActivity getFragmentActivity() {
-	return (TravellerActivity) this.getActivity();
+    public MainActivity getFragmentActivity() {
+	return (MainActivity) this.getActivity();
     }
 }

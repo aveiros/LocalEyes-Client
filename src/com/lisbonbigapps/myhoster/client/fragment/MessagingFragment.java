@@ -28,7 +28,7 @@ import com.lisbonbigapps.myhoster.client.adapter.MessagingListAdapter;
 import com.lisbonbigapps.myhoster.client.data.MessageItem;
 import com.lisbonbigapps.myhoster.client.database.Message;
 import com.lisbonbigapps.myhoster.client.database.MessagesDataSource;
-import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
+import com.lisbonbigapps.myhoster.client.ui.MainActivity;
 import com.lisbonbigapps.myhoster.client.util.MessengerEvents;
 
 public class MessagingFragment extends SherlockListFragment {
@@ -57,7 +57,7 @@ public class MessagingFragment extends SherlockListFragment {
 	}
 
 	if (!this.user2.equals("")) {
-	    this.getBaseActivity(TravellerActivity.class).getService().addContact(user2);
+	    this.getBaseActivity(MainActivity.class).getService().addContact(user2);
 	}
     }
 
@@ -96,7 +96,7 @@ public class MessagingFragment extends SherlockListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
 	super.onActivityCreated(savedInstanceState);
 
-	MessagesDataSource dataSource = this.getBaseActivity(TravellerActivity.class).getMessagesDataSource();
+	MessagesDataSource dataSource = this.getBaseActivity(MainActivity.class).getMessagesDataSource();
 	List<Message> messages = dataSource.getMessagesWith(this.user1, this.user2, 10);
 	fillView(messages);
     }
@@ -166,7 +166,7 @@ public class MessagingFragment extends SherlockListFragment {
 
     private void sendMessage(String message) {
 	this.addMessage(user1, message);
-	this.getBaseActivity(TravellerActivity.class).sendMessage(this.user2, message);
+	this.getBaseActivity(MainActivity.class).sendMessage(this.user2, message);
     }
 
     private void addMessage(String user, String message) {

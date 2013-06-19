@@ -3,7 +3,7 @@ package com.lisbonbigapps.myhoster.client.fragment;
 import com.lisbonbigapps.myhoster.client.app.App;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.ui.LoginActivity;
-import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
+import com.lisbonbigapps.myhoster.client.ui.MainActivity;
 import com.lisbonbigapps.myhoster.client.util.PreferencesHelper;
 import com.lisbonbigapps.myhoster.client.R;
 
@@ -137,7 +137,7 @@ public class SlidingMenuFragment extends Fragment {
     }
 
     protected void onLogOut() {
-	TravellerActivity activity = (TravellerActivity) getActivity();
+	MainActivity activity = (MainActivity) getActivity();
 	Context context = activity.getBaseContext();
 
 	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);

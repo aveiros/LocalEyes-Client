@@ -21,11 +21,14 @@ import com.lisbonbigapps.myhoster.client.adapter.ServiceModelListAdapter;
 import com.lisbonbigapps.myhoster.client.request.ServicesRequest;
 import com.lisbonbigapps.myhoster.client.resources.ListServiceResource;
 import com.lisbonbigapps.myhoster.client.resources.ServiceResource;
-import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
+import com.lisbonbigapps.myhoster.client.ui.MainActivity;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
 public class ServicesFragment extends SherlockListFragment {
+    static final String TAG = ServicesFragment.class.toString();
+    static final int AB_REFRESH = 1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -42,8 +45,8 @@ public class ServicesFragment extends SherlockListFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 	super.onCreateOptionsMenu(menu, inflater);
-	menu.add("Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-	
+	menu.add(0, AB_REFRESH, 0, "Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
 	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
 	actionBar.setTitle("Services");
 	actionBar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
@@ -52,10 +55,7 @@ public class ServicesFragment extends SherlockListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 	super.onActivityCreated(savedInstanceState);
-
-	TravellerActivity activity = (TravellerActivity) this.getActivity();
-	ServicesRequest request = new ServicesRequest();
-	activity.getContentManager().execute(request, new ServicesRequestListener());
+	this.getServices();
     }
 
     @Override
@@ -80,7 +80,19 @@ public class ServicesFragment extends SherlockListFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-	return true;
+	switch (item.getItemId()) {
+	case AB_REFRESH:
+	    this.getServices();
+	    return true;
+	default:
+	    return super.onOptionsItemSelected(item);
+	}
+    }
+
+    private void getServices() {
+	MainActivity activity = (MainActivity) this.getActivity();
+	ServicesRequest request = new ServicesRequest();
+	activity.getContentManager().execute(request, new ServicesRequestListener());
     }
 
     private class ServicesRequestListener implements RequestListener<ListServiceResource> {

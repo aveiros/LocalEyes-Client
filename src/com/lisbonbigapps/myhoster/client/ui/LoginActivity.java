@@ -105,7 +105,7 @@ public class LoginActivity extends Activity {
 	    app.setUser(user);
 
 	    finish();
-	    Intent intent = new Intent(getBaseContext(), TravellerActivity.class);
+	    Intent intent = new Intent(getBaseContext(), MainActivity.class);
 	    startActivity(intent);
 	}
     }

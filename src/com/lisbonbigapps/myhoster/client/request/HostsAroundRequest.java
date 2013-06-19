@@ -9,15 +9,24 @@ import com.lisbonbigapps.myhoster.client.spring.SpringAndroidSpiceRequestExtende
 import com.lisbonbigapps.myhoster.client.util.ServerHelper;
 
 public class HostsAroundRequest extends SpringAndroidSpiceRequestExtended<ListUserResource> {
+    private double distance;
     private Double latitude;
     private Double longitude;
-    private double distance;
+    private Boolean store;
 
     public HostsAroundRequest(double distance, Double latitude, Double longitude) {
 	super(ListUserResource.class);
 	this.latitude = latitude;
 	this.longitude = longitude;
 	this.distance = distance;
+    }
+
+    public HostsAroundRequest(double distance, Double latitude, Double longitude, Boolean store) {
+	super(ListUserResource.class);
+	this.latitude = latitude;
+	this.longitude = longitude;
+	this.distance = distance;
+	this.store = store;
     }
 
     @Override
@@ -30,8 +39,11 @@ public class HostsAroundRequest extends SpringAndroidSpiceRequestExtended<ListUs
 	    uriBuilder.appendQueryParameter("longitude", this.longitude + "");
 	}
 
-	String url = uriBuilder.build().toString();
+	if (this.store != null) {
+	    uriBuilder.appendQueryParameter("store", this.store + "");
+	}
 
+	String url = uriBuilder.build().toString();
 	RestTemplate restTemplate = this.getRestTemplate();
 	return restTemplate.getForObject(url, ListUserResource.class);
     }

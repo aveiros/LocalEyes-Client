@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListFragment;
@@ -21,19 +23,24 @@ import com.lisbonbigapps.myhoster.client.model.HosterModel;
 import com.lisbonbigapps.myhoster.client.request.HostsAroundRequest;
 import com.lisbonbigapps.myhoster.client.resources.ListUserResource;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
-import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
+import com.lisbonbigapps.myhoster.client.service.LocalTracker;
+import com.lisbonbigapps.myhoster.client.ui.MainActivity;
 import com.lisbonbigapps.myhoster.client.R;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
 public class HostListFragment extends SherlockListFragment {
+    static final String TAG = HostListFragment.class.toString();
+    static final int AB_REFRESH = 1;
+
+    int host_distance = 3000;
+
     private OnHostSelectedListener mCallback;
     boolean isDualPane;
     int mCurCheckPosition = 0;
     public static final String ARG_SECTION_NUMBER = "BrowseHostersListFragment";
     public ListView mainList;
 
-    // Methods
     @Override
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -43,14 +50,14 @@ public class HostListFragment extends SherlockListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	super.onCreateView(inflater, container, savedInstanceState);
-	View v = inflater.inflate(R.layout.fragment_hosters_list, container, false);
-	return v;
+	View view = inflater.inflate(R.layout.fragment_hosters_list, container, false);
+	return view;
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 	super.onCreateOptionsMenu(menu, inflater);
-	menu.add("Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+	menu.add(0, AB_REFRESH, 0, "Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
 	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
 	actionBar.setTitle("Around You");
@@ -71,29 +78,43 @@ public class HostListFragment extends SherlockListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 	super.onActivityCreated(savedInstanceState);
-
-	TravellerActivity activity = (TravellerActivity) this.getActivity();
-	HostsAroundRequest request = new HostsAroundRequest(500, 0.0, 0.0);
-	activity.getContentManager().execute(request, new HostsAroundRequestListener());
+	this.getHostsAround();
     }
-
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+	switch (item.getItemId()) {
+	case AB_REFRESH:
+	    this.getHostsAround();
+	    return true;
+	default:
+	    return super.onOptionsItemSelected(item);
+	}
+    }
+    
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
 	super.onListItemClick(l, v, position, id);
 	mCallback.onHostSelected(id);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-	// switch (item.getItemId()) {
-	// case android.R.id.home:
-	// Intent intent = new Intent();
-	// intent.setClass(getSherlockActivity(), SelectionModeActivity.class);
-	// startActivity(intent);
-	// return (true);
-	// }
-	// return false;
-	return true;
+    public void getHostsAround() {
+	MainActivity activity = (MainActivity) this.getActivity();
+	activity.setTracker(new LocalTracker(activity));
+	LocalTracker tracker = activity.getTracker();
+
+	if (tracker.canGetLocation()) {
+	    double latitude = tracker.getLatitude();
+	    double longitude = tracker.getLongitude();
+
+	    Toast.makeText(getActivity(), latitude + " | " + longitude, Toast.LENGTH_LONG).show();
+	    Log.d(TAG, latitude + " | " + longitude);
+	    HostsAroundRequest request = new HostsAroundRequest(host_distance, latitude, longitude, true);
+	    activity.getContentManager().execute(request, new HostsAroundRequestListener());
+	} else {
+	    Log.d(TAG, "location n/a");
+	    Toast.makeText(getActivity(), "Please enable Network/GPS!", Toast.LENGTH_LONG).show();
+	}
     }
 
     public interface OnHostSelectedListener {

@@ -24,7 +24,7 @@ import com.lisbonbigapps.myhoster.client.request.ServiceCreateRequest;
 import com.lisbonbigapps.myhoster.client.request.UserRequest;
 import com.lisbonbigapps.myhoster.client.resources.ServiceResource;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
-import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
+import com.lisbonbigapps.myhoster.client.ui.MainActivity;
 import com.lisbonbigapps.myhoster.client.R;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
@@ -70,7 +70,7 @@ public class HostProfileFragment extends SherlockFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
 	super.onActivityCreated(savedInstanceState);
 
-	TravellerActivity activity = (TravellerActivity) this.getActivity();
+	MainActivity activity = (MainActivity) this.getActivity();
 	UserRequest request = new UserRequest(this.userId);
 	activity.getContentManager().execute(request, new UserRequestListener());
     }
@@ -104,7 +104,7 @@ public class HostProfileFragment extends SherlockFragment {
 	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
 
 	if (fragment != null) {
-	    String username = getBaseActivity(TravellerActivity.class).getService().getUsername();
+	    String username = getBaseActivity(MainActivity.class).getService().getUsername();
 
 	    String user1 = (username == null ? "" : username);
 	    // TODO: HARD CODED
@@ -140,7 +140,7 @@ public class HostProfileFragment extends SherlockFragment {
     }
 
     private void createBook() {
-	TravellerActivity activity = getBaseActivity(TravellerActivity.class);
+	MainActivity activity = getBaseActivity(MainActivity.class);
 	ServiceCreateRequest request = new ServiceCreateRequest(userId);
 	activity.getContentManager().execute(request, new ServiceCreateRequestListener());
     }

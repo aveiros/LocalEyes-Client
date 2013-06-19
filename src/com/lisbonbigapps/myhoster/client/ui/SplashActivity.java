@@ -88,7 +88,7 @@ public class SplashActivity extends Activity {
     }
 
     protected void authenticationSuccess() {
-	Intent intent = new Intent(getBaseContext(), TravellerActivity.class);
+	Intent intent = new Intent(getBaseContext(), MainActivity.class);
 	startActivity(intent);
 	finish();
     }
