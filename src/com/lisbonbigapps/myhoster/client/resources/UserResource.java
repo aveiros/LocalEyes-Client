@@ -7,6 +7,7 @@ public class UserResource extends RootResource {
     String username;
     String name;
     String photo;
+    String phoneNumber;
     List<String> interests;
 
     LocationResource location;
@@ -67,5 +68,13 @@ public class UserResource extends RootResource {
 
     public void setService(ServiceProfileResource service) {
 	this.service = service;
+    }
+
+    public String getPhoneNumber() {
+	return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+	this.phoneNumber = phoneNumber;
     }
 }

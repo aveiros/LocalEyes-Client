@@ -67,9 +67,14 @@ public class ServicesFragment extends SherlockListFragment {
 	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
 
 	if (fragment != null) {
-	    Fragment serviceFragment = new ServiceFragment();
+	    Bundle args = new Bundle();
+	    args.putLong("id", id);
+
+	    Fragment fg = new ServiceFragment();
+	    fg.setArguments(args);
+
 	    FragmentTransaction transaction = manager.beginTransaction();
-	    transaction.replace(R.id.fragment_content, serviceFragment);
+	    transaction.replace(R.id.fragment_content, fg);
 	    transaction.commit();
 	}
     }
@@ -78,10 +83,6 @@ public class ServicesFragment extends SherlockListFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 	return true;
     }
-
-    // public interface OnHostSelectedListener {
-    // public void onHostSelected(long hostId);
-    // }
 
     private class ServicesRequestListener implements RequestListener<ListServiceResource> {
 	@Override
