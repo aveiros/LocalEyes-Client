@@ -71,6 +71,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:padding="8dip"
+       
                     android:textColor="@color/white"
                     android:textSize="@dimen/largeText"
                     android:textColorHint="@color/medium_grey"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"    
-    android:background="@drawable/lisbon_bg_2"
+    android:background="@drawable/lisboa_bg_7"
     android:layout_height="match_parent" >
 
   <ImageView

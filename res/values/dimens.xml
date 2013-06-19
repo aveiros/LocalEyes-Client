@@ -18,6 +18,10 @@
     <dimen name="list_padding">10dp</dimen>
     <dimen name="shadow_width">10dp</dimen>
     
+    <dimen name="profile_picture_resize">50dp</dimen>
+    
+    <dimen name="button_height_mdpi">40dp</dimen>
+    
     <dimen name="smallText">12sp</dimen>
     <dimen name="largeText">16sp</dimen>
     <dimen name="menuEntryTitleText">18sp</dimen>

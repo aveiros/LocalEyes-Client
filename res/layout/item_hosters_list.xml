@@ -1,104 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp" >
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
 
     <LinearLayout
-        android:id="@+id/contactPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
-        android:orientation="horizontal" >  
-        
-	    <ImageView
-	        android:id="@+id/imageViewContact"
-	        android:layout_width="50dp"
-	        android:layout_height="50dp"
-	        android:layout_centerVertical="true"
-	        android:layout_marginLeft="5dp"
-	        android:layout_marginRight="5dp"
-	        android:layout_marginTop="5dp"
-	        android:layout_marginBottom="5dp"
-	        android:background="@drawable/thumb_1"
-	        android:focusable="false" />        
-        
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/contactPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageViewContact"
+                android:layout_width="@dimen/profile_picture_resize"
+                android:layout_height="@dimen/profile_picture_resize"
+                android:background="@drawable/thumb_1"
+                android:focusable="false" />
+        </LinearLayout>
     </LinearLayout>
-    
-
-
-    <Button
-        android:id="@+id/button_request"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
-        android:background="@color/fancy_blue"
-        android:focusable="false"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:text="BOOK"
-        android:textColor="#FFFFFF"
-        android:textSize="10sp" />
-
 
     <LinearLayout
-        android:id="@+id/layoutHostName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/contactPicture"
-        android:layout_alignTop="@+id/contactPicture"
+        android:layout_weight="3"
+        android:background="@color/white"
         android:gravity="left"
         android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/grid_label_name"
+        <LinearLayout
+            android:id="@+id/layoutHostName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/grid_label_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:text="JOANA TEIXEIRA"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/largeText"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/grid_label_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_around_me"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:text="200m"
+                android:textColor="@color/medium_grey"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/grid_label_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_service_location"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="TORRE DE BELEM"
+                android:textColor="@color/medium_grey"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutHostName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="JOANNA TEIXEIRA"
-            android:layout_marginTop="2dp"
-            android:textColor="@color/dark_grey"
-            android:textSize="@dimen/largeText"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/grid_label_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="20€"
+                android:textColor="@color/medium_grey"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_request"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/fancy_blue"
+                android:focusable="false"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="BOOK"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+        </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/grid_label_fee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/button_request"
-        android:layout_marginRight="10dp"
-        android:layout_centerVertical="true"
-        android:text="20€"
-        android:textSize="24sp"
-        android:textColor="@color/medium_grey" />
-
-    <TextView
-        android:id="@+id/grid_label_distance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/layoutHostName"
-        android:layout_below="@+id/grid_label_address"
-        android:drawableLeft="@drawable/ic_around_me"
-        android:focusable="false"
-        android:gravity="center_vertical"
-        android:text="200m"
-        android:textColor="@color/medium_grey"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/grid_label_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/layoutHostName"        
-		android:layout_below="@+id/layoutHostName"
-        android:drawableLeft="@drawable/ic_service_location"
-        android:focusable="false"
-        android:gravity="center"
-        android:text="TORRE DE BELEM"
-        android:textColor="@color/medium_grey"
-        android:textSize="10sp" />
-
-</RelativeLayout>
+</LinearLayout>
