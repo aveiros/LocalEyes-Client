@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -44,8 +45,10 @@ public class ServiceFragment extends SherlockFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 	super.onCreateOptionsMenu(menu, inflater);
-	// inflater.inflate(R.menu.profile_menu, menu);
-	// getSherlockActivity().getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_back));
+
+	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+	actionBar.setTitle("Service Information");
+	actionBar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
     }
 
     @Override

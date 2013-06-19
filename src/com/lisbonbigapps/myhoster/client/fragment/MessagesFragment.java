@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -41,11 +42,11 @@ public class MessagesFragment extends SherlockListFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-	// inflater.inflate(R.menu.profile_menu, menu);
-	// Add Search Button
 	super.onCreateOptionsMenu(menu, inflater);
-	menu.add("Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-	getSherlockActivity().getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_ab));
+
+	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+	actionBar.setTitle("Messages");
+	actionBar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
     }
 
     @Override
@@ -62,7 +63,7 @@ public class MessagesFragment extends SherlockListFragment {
 	    return;
 	}
 
-	//dataSource.deleteAllMessages();
+	// dataSource.deleteAllMessages();
 	List<Message> messages = dataSource.getAllMessages();
 	fillView(messages);
     }

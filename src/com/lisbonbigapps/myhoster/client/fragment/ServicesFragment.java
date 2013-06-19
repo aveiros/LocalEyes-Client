@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -39,15 +41,12 @@ public class ServicesFragment extends SherlockListFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-	// inflater.inflate(R.menu.profile_menu, menu);
-	// Add Search Button
 	super.onCreateOptionsMenu(menu, inflater);
 	menu.add("Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-	getSherlockActivity().getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_ab));
-
-	// White ABS title
-	// String abTitle = "<font color='#ffffff'>Locals around you..</font>";
-	// getSherlockActivity().getSupportActionBar().setTitle(Html.fromHtml(abTitle));
+	
+	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+	actionBar.setTitle("Services");
+	actionBar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
     }
 
     @Override

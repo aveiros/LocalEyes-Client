@@ -17,6 +17,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
+
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -84,8 +86,10 @@ public class MessagingFragment extends SherlockListFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 	super.onCreateOptionsMenu(menu, inflater);
-	menu.add("Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-	getSherlockActivity().getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_ab));
+
+	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+	actionBar.setTitle("Messaging");
+	actionBar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
     }
 
     @Override

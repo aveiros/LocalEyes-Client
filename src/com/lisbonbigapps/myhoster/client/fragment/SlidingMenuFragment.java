@@ -3,10 +3,10 @@ package com.lisbonbigapps.myhoster.client.fragment;
 import com.lisbonbigapps.myhoster.client.app.App;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.ui.LoginActivity;
+import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
 import com.lisbonbigapps.myhoster.client.util.PreferencesHelper;
 import com.lisbonbigapps.myhoster.client.R;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -86,9 +86,9 @@ public class SlidingMenuFragment extends Fragment {
 	    return;
 	}
 
-	TextView textName = (TextView) view.findViewById(R.id.profileMenuName);
-	TextView textFeedback = (TextView) view.findViewById(R.id.profileLocalTextViewFeedback);
-	TextView textStatus = (TextView) view.findViewById(R.id.profileMenuTextViewStatus);
+	TextView textName = (TextView) view.findViewById(R.id.profileLocalName);
+	TextView textFeedback = (TextView) view.findViewById(R.id.textView4);
+	TextView textStatus = (TextView) view.findViewById(R.id.profileLocalTextViewStatus);
 
 	textName.setText(user.getName());
 	textStatus.setText("Online");
@@ -137,7 +137,7 @@ public class SlidingMenuFragment extends Fragment {
     }
 
     protected void onLogOut() {
-	Activity activity = getActivity();
+	TravellerActivity activity = (TravellerActivity) getActivity();
 	Context context = activity.getBaseContext();
 
 	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -146,6 +146,7 @@ public class SlidingMenuFragment extends Fragment {
 	editor.remove(PreferencesHelper.Username).commit();
 	editor.remove(PreferencesHelper.Password).commit();
 
+	activity.getService().disconnect();
 	activity.finish();
 	Intent intent = new Intent(context, LoginActivity.class);
 	startActivity(intent);

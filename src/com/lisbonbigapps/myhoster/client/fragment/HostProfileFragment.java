@@ -2,10 +2,10 @@ package com.lisbonbigapps.myhoster.client.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -23,7 +24,6 @@ import com.lisbonbigapps.myhoster.client.request.ServiceCreateRequest;
 import com.lisbonbigapps.myhoster.client.request.UserRequest;
 import com.lisbonbigapps.myhoster.client.resources.ServiceResource;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
-import com.lisbonbigapps.myhoster.client.ui.LoginActivity;
 import com.lisbonbigapps.myhoster.client.ui.TravellerActivity;
 import com.lisbonbigapps.myhoster.client.R;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -44,8 +44,10 @@ public class HostProfileFragment extends SherlockFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 	super.onCreateOptionsMenu(menu, inflater);
-	inflater.inflate(R.menu.profile_menu, menu);
-	getSherlockActivity().getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_back));
+
+	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+	actionBar.setTitle("Profile");
+	actionBar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
     }
 
     @Override
@@ -196,8 +198,19 @@ public class HostProfileFragment extends SherlockFragment {
 	    if (service == null) {
 		return;
 	    }
-	    
-	    Toast.makeText(getActivity(), "Service booked! Please check your booking services!", Toast.LENGTH_SHORT).show();
+
+	    FragmentActivity activity = getActivity();
+
+	    Toast.makeText(activity, "Service booked! Please check your booking services!", Toast.LENGTH_SHORT).show();
+	    FragmentManager manager = activity.getSupportFragmentManager();
+	    Fragment fragment = manager.findFragmentById(R.id.fragment_content);
+
+	    if (fragment != null) {
+		Fragment fg = new ServicesFragment();
+		FragmentTransaction transaction = manager.beginTransaction();
+		transaction.replace(R.id.fragment_content, fg);
+		transaction.commit();
+	    }
 	}
     }
 }

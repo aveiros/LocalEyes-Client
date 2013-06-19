@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -48,15 +49,12 @@ public class HostListFragment extends SherlockListFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-	// inflater.inflate(R.menu.profile_menu, menu);
-	// Add Search Button
 	super.onCreateOptionsMenu(menu, inflater);
 	menu.add("Refresh").setIcon(R.drawable.ic_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-	getSherlockActivity().getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_ab));
 
-	// White ABS title
-	String abTitle = "<font color='#ffffff'>Locals around you..</font>";
-	getSherlockActivity().getSupportActionBar().setTitle(Html.fromHtml(abTitle));
+	ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+	actionBar.setTitle("Around You");
+	actionBar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
     }
 
     @Override
@@ -109,7 +107,7 @@ public class HostListFragment extends SherlockListFragment {
 	    if (context == null) {
 		return;
 	    }
-	    
+
 	    HosterModel[] closeByhosts = new HosterModel[0];
 	    ListAdapter listAdapter = new HostsModelListAdapter(context, closeByhosts);
 	    setListAdapter(listAdapter);
@@ -120,7 +118,7 @@ public class HostListFragment extends SherlockListFragment {
 	    if (listUsers == null) {
 		return;
 	    }
-	    
+
 	    Context context = getActivity();
 	    if (context == null) {
 		return;

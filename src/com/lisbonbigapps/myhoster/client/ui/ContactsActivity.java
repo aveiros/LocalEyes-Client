@@ -85,7 +85,7 @@ public class ContactsActivity extends Activity {
 	    }
 	});
 
-	this.LvUsers = (ListView) this.findViewById(R.id.users);
+	this.LvUsers = (ListView) this.findViewById(R.id.interestsList);
 	this.LvUsers.setOnItemClickListener(new OnItemClickListener() {
 	    @Override
 	    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
