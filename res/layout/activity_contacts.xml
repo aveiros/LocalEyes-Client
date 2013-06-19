@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/layout_margin"
+    android:layout_marginRight="@dimen/layout_margin"    
     android:orientation="vertical"
     tools:context=".ContactsActivity" >
 

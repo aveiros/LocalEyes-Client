@@ -20,7 +20,7 @@
         <shape>
             <gradient
                 android:startColor="@color/fancy_blue"
-                android:endColor="#2D6FA1"
+                android:endColor="#2F92DE"
                 android:angle="270" />
             <stroke
                 android:width="0.1dp"
