@@ -2,9 +2,13 @@ package com.lisbonbigapps.myhoster.client.app;
 
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.service.LocalService;
+import com.lisbonbigapps.myhoster.client.util.Mode;
+import com.lisbonbigapps.myhoster.client.util.PreferencesHelper;
 
 import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class App extends Application {
@@ -37,5 +41,11 @@ public class App extends Application {
 
     public boolean hasUser() {
 	return user != null;
+    }
+
+    public String getMode() {
+	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+	String mode = preferences.getString(PreferencesHelper.Mode, "");
+	return mode.equals("") ? Mode.TOURIST : mode;
     }
 }

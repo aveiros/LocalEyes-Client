@@ -1,5 +1,6 @@
 package com.lisbonbigapps.myhoster.client.fragment;
 
+import java.util.List;
 import com.lisbonbigapps.myhoster.client.app.App;
 import com.lisbonbigapps.myhoster.client.resources.UserResource;
 import com.lisbonbigapps.myhoster.client.ui.LoginActivity;
@@ -10,6 +11,8 @@ import com.lisbonbigapps.myhoster.client.R;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -21,11 +24,13 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-public class SlidingMenuFragment extends Fragment {
+public class TouristSlidingMenuFragment extends Fragment {
+    View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	setHasOptionsMenu(true);
-	View view = inflater.inflate(R.layout.sliding_menu_traveller, container, false);
+	view = inflater.inflate(R.layout.sliding_menu_traveller, container, false);
 
 	View v = view.findViewById(R.id.layoutMenuSearch);
 	v.setOnClickListener(new OnClickListener() {
@@ -72,6 +77,8 @@ public class SlidingMenuFragment extends Fragment {
     }
 
     private void fillView(View view) {
+	getLocation();
+
 	if (view == null) {
 	    return;
 	}
@@ -112,6 +119,32 @@ public class SlidingMenuFragment extends Fragment {
 
     }
 
+    protected void getLocation() {
+	Geocoder gc = new Geocoder(this.getActivity());
+
+	List<Address> list = null;
+	try {
+	    list = gc.getFromLocation(38.725174, -9.150099, 10);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+
+	if (list == null) {
+	    return;
+	}
+
+	String location = "";
+	if (list.size() == 1) {
+	    Address address = list.get(0);
+	    String l1 = address.getLocality() == null ? "" : address.getLocality();
+	    String l2 = address.getThoroughfare() == null ? "" : address.getThoroughfare();
+	    location = String.format("%s - %s", l1, l2);
+	}
+
+	TextView textLocation = (TextView) view.findViewById(R.id.profileLocalTextViewLocation);
+	textLocation.setText(location);
+    }
+
     protected void onServices() {
 	FragmentManager manager = getActivity().getSupportFragmentManager();
 	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
@@ -143,6 +176,7 @@ public class SlidingMenuFragment extends Fragment {
 	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 	SharedPreferences.Editor editor = preferences.edit();
 
+	editor.remove(PreferencesHelper.Mode).commit();
 	editor.remove(PreferencesHelper.Username).commit();
 	editor.remove(PreferencesHelper.Password).commit();
 

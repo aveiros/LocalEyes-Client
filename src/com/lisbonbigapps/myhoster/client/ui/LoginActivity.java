@@ -115,7 +115,10 @@ public class LoginActivity extends Activity {
 	    app.setUser(user);
 
 	    finish();
-	    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+
+	    String mode = preferences.getString(PreferencesHelper.Mode, "");
+	    Class<?> activity = (mode.equals("") ? ModeActivity.class : MainActivity.class);
+	    Intent intent = new Intent(getBaseContext(), activity);
 	    startActivity(intent);
 	}
     }

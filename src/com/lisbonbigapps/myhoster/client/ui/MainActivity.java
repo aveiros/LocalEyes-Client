@@ -27,15 +27,20 @@ import com.actionbarsherlock.view.Window;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.lisbonbigapps.myhoster.client.adapter.SuggestionsAdapter;
+import com.lisbonbigapps.myhoster.client.app.App;
 import com.lisbonbigapps.myhoster.client.data.MessageItem;
 import com.lisbonbigapps.myhoster.client.data.RosterContact;
 import com.lisbonbigapps.myhoster.client.database.MessagesDataSource;
 import com.lisbonbigapps.myhoster.client.fragment.HostListFragment;
 import com.lisbonbigapps.myhoster.client.fragment.HostProfileFragment;
-import com.lisbonbigapps.myhoster.client.fragment.SlidingMenuFragment;
+import com.lisbonbigapps.myhoster.client.fragment.LocalServicesFragment;
+import com.lisbonbigapps.myhoster.client.fragment.LocalSlidingMenuFragment;
+import com.lisbonbigapps.myhoster.client.fragment.ServicesFragment;
+import com.lisbonbigapps.myhoster.client.fragment.TouristSlidingMenuFragment;
 import com.lisbonbigapps.myhoster.client.service.LocalService;
 import com.lisbonbigapps.myhoster.client.service.LocalTracker;
 import com.lisbonbigapps.myhoster.client.util.MessengerEvents;
+import com.lisbonbigapps.myhoster.client.util.Mode;
 import com.lisbonbigapps.myhoster.client.util.PreferencesHelper;
 import com.lisbonbigapps.myhoster.client.R;
 import com.octo.android.robospice.JacksonSpringAndroidSpiceService;
@@ -84,6 +89,9 @@ public class MainActivity extends SlidingFragmentActivity implements HostListFra
 	super.onCreate(savedInstanceState);
 	this.setMessagesDataSource(new MessagesDataSource(this));
 
+	App app = (App) getApplication();
+	String mode = app.getMode();
+
 	// ACTION BAR
 	// BitmapDrawable bg = (BitmapDrawable)
 	// getResources().getDrawable(R.drawable.ab_bg);
@@ -93,14 +101,20 @@ public class MainActivity extends SlidingFragmentActivity implements HostListFra
 	ActionBar bar = getSupportActionBar();
 	bar.setDisplayHomeAsUpEnabled(true);
 	bar.setTitle("");
-	//bar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
+	// bar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
 	// this.getMessagesDataSource().drop();
 
 	// set the Behind View
 	setBehindContentView(R.layout.menu_frame);
 	if (savedInstanceState == null) {
 	    FragmentTransaction t = this.getSupportFragmentManager().beginTransaction();
-	    mFrag = new SlidingMenuFragment();
+
+	    if (mode.equals(Mode.TOURIST)) {
+		mFrag = new TouristSlidingMenuFragment();
+	    } else {
+		mFrag = new LocalSlidingMenuFragment();
+	    }
+
 	    t.replace(R.id.menu_frame, mFrag);
 	    t.commit();
 	} else {
@@ -122,7 +136,15 @@ public class MainActivity extends SlidingFragmentActivity implements HostListFra
 
 	if (fragment == null) {
 	    FragmentTransaction ft = fm.beginTransaction();
-	    ft.add(R.id.fragment_content, new HostListFragment());
+	    Fragment fg;
+
+	    if (mode.equals(Mode.TOURIST)) {
+		fg = new HostListFragment();
+	    } else {
+		fg = new LocalServicesFragment();
+	    }
+
+	    ft.add(R.id.fragment_content, fg);
 	    ft.commit();
 	}
     }
