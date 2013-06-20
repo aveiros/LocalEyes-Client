@@ -150,7 +150,7 @@ public class TouristSlidingMenuFragment extends Fragment {
 	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
 
 	if (fragment != null) {
-	    Fragment fg = new ServicesFragment();
+	    Fragment fg = new TouristServiceListFragment();
 	    FragmentTransaction transaction = manager.beginTransaction();
 	    transaction.replace(R.id.fragment_content, fg);
 	    transaction.commit();

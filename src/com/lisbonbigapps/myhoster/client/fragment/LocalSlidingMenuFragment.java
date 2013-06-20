@@ -39,6 +39,14 @@ public class LocalSlidingMenuFragment extends Fragment {
 		onServices();
 	    }
 	});
+	
+	v = view.findViewById(R.id.layoutMenuMap);
+	v.setOnClickListener(new OnClickListener() {
+	    @Override
+	    public void onClick(View v) {
+		onMessages();
+	    }
+	});
 
 	v = view.findViewById(R.id.bt_logout);
 	v.setOnClickListener(new OnClickListener() {
@@ -121,7 +129,7 @@ public class LocalSlidingMenuFragment extends Fragment {
 	Fragment fragment = manager.findFragmentById(R.id.fragment_content);
 
 	if (fragment != null) {
-	    Fragment fg = new ServicesFragment();
+	    Fragment fg = new LocalServiceListFragment();
 	    FragmentTransaction transaction = manager.beginTransaction();
 	    transaction.replace(R.id.fragment_content, fg);
 	    transaction.commit();

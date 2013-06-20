@@ -109,7 +109,7 @@ public class HostListFragment extends SherlockListFragment {
 
 	    Toast.makeText(getActivity(), latitude + " | " + longitude, Toast.LENGTH_LONG).show();
 	    Log.d(TAG, latitude + " | " + longitude);
-	    HostsAroundRequest request = new HostsAroundRequest(host_distance, latitude, longitude, true);
+	    HostsAroundRequest request = new HostsAroundRequest(host_distance, 0d, 0d /*, true*/);
 	    activity.getContentManager().execute(request, new HostsAroundRequestListener());
 	} else {
 	    Log.d(TAG, "location n/a");

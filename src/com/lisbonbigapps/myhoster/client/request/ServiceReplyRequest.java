@@ -21,7 +21,6 @@ public class ServiceReplyRequest extends SpringAndroidSpiceRequestExtended<Servi
 
     public ServiceReplyRequest(long serviceId, String answer) {
 	super(ServiceResource.class);
-
 	this.serviceId = serviceId;
 	this.answer = answer;
     }

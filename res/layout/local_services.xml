@@ -3,17 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="@dimen/layout_margin"
-    android:layout_marginRight="@dimen/layout_margin"        
-    android:orientation="vertical"
-    tools:context=".ChatActivity" >
+    android:layout_marginRight="@dimen/layout_margin"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/myServicesTitleLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
-        
-<LinearLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -39,8 +38,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-				android:background="@drawable/titles_bg"                
                 android:layout_weight="3"
+                android:background="@drawable/titles_bg"
                 android:gravity="left"
                 android:orientation="horizontal" >
 
@@ -48,19 +47,19 @@
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"                   
+                    android:layout_gravity="center_vertical"
                     android:text="NEW SERVICES"
-                    android:textStyle="bold"
                     android:textColor="@color/fancy_blue"
-                    android:textSize="@dimen/menuNotificationBoxText" />
+                    android:textSize="@dimen/menuNotificationBoxText"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    
-<LinearLayout
+
+    <LinearLayout
         android:id="@+id/services"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"   
+        android:layout_height="fill_parent"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -74,32 +73,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="75dp"
-                android:text="No services yet.." />
-            
-			<ListView 
-			    android:id="@android:id/list"
-				android:layout_width="fill_parent" 			
-				android:layout_height="wrap_content"
-				android:paddingBottom="0.5dp"
-				android:transcriptMode="normal"
-				android:fadingEdge="none" 
-				
-				android:fastScrollEnabled="true" 
-				android:smoothScrollbar="false"
-				tools:listitem="@layout/item_local_service_list"
-				android:focusable="true"/>
-                    
-        </LinearLayout>
+                android:text="No services yet.." 
+                android:visibility="gone"
+                />
 
-    </LinearLayout>   
-    
- <LinearLayout
+            <ListView
+                android:id="@android:id/list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fadingEdge="none"
+                android:fastScrollEnabled="true"
+                android:focusable="true"
+                android:paddingBottom="0.5dp"
+                android:smoothScrollbar="false"
+                android:transcriptMode="normal"
+                tools:listitem="@layout/item_local_service_list" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/myServicesTitleLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
-        
-<LinearLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -125,8 +123,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-				android:background="@drawable/titles_bg"                
                 android:layout_weight="3"
+                android:background="@drawable/titles_bg"
                 android:gravity="left"
                 android:orientation="horizontal" >
 
@@ -134,22 +132,21 @@
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"                   
+                    android:layout_gravity="center_vertical"
                     android:text="PREVIOUS SERVICES"
-                    android:textStyle="bold"
                     android:textColor="@color/fancy_blue"
-                    android:textSize="@dimen/menuNotificationBoxText" />
+                    android:textSize="@dimen/menuNotificationBoxText"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    
-<LinearLayout
+
+    <LinearLayout
         android:id="@+id/services"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/contactButtons"
-        
         android:orientation="vertical" >
 
         <LinearLayout
@@ -157,26 +154,21 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical" >
-            
-			<ListView android:id="@android:id/list"
-				android:layout_width="fill_parent" 	
-				android:background="@color/super_light_grey"			
-				android:layout_height="0dip"
-				android:layout_weight="1" 
-				android:paddingBottom="0.5dp"
-				android:transcriptMode="normal"
-				android:fadingEdge="none" 
-				
-				android:fastScrollEnabled="true" 
-				android:smoothScrollbar="false"
-				tools:listitem="@layout/item_service_list"
-				android:focusable="true"/>
-                    
+
+            <ListView
+                android:id="@+id/confirmedListView"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:background="@color/super_light_grey"
+                android:fadingEdge="none"
+                android:fastScrollEnabled="true"
+                android:focusable="true"
+                android:paddingBottom="0.5dp"
+                android:smoothScrollbar="false"
+                android:transcriptMode="normal"
+                tools:listitem="@layout/item_service_list" />
         </LinearLayout>
-    </LinearLayout>    
-
-
-
-
+    </LinearLayout>
 
 </LinearLayout>

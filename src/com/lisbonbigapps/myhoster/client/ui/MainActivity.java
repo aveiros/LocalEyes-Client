@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,9 +31,8 @@ import com.lisbonbigapps.myhoster.client.data.RosterContact;
 import com.lisbonbigapps.myhoster.client.database.MessagesDataSource;
 import com.lisbonbigapps.myhoster.client.fragment.HostListFragment;
 import com.lisbonbigapps.myhoster.client.fragment.HostProfileFragment;
-import com.lisbonbigapps.myhoster.client.fragment.LocalServicesFragment;
+import com.lisbonbigapps.myhoster.client.fragment.LocalServiceListFragment;
 import com.lisbonbigapps.myhoster.client.fragment.LocalSlidingMenuFragment;
-import com.lisbonbigapps.myhoster.client.fragment.ServicesFragment;
 import com.lisbonbigapps.myhoster.client.fragment.TouristSlidingMenuFragment;
 import com.lisbonbigapps.myhoster.client.service.LocalService;
 import com.lisbonbigapps.myhoster.client.service.LocalTracker;
@@ -141,7 +138,7 @@ public class MainActivity extends SlidingFragmentActivity implements HostListFra
 	    if (mode.equals(Mode.TOURIST)) {
 		fg = new HostListFragment();
 	    } else {
-		fg = new LocalServicesFragment();
+		fg = new LocalServiceListFragment();
 	    }
 
 	    ft.add(R.id.fragment_content, fg);

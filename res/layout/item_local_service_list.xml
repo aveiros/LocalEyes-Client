@@ -2,7 +2,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/layout_margin"
-    android:layout_marginRight="@dimen/layout_margin"    
+    android:layout_marginRight="@dimen/layout_margin"
     android:background="@color/white"
     android:gravity="center_vertical"
     android:orientation="horizontal" >
@@ -76,7 +76,8 @@
                 android:gravity="center"
                 android:text="TORRE DE BELEM"
                 android:textColor="@color/medium_grey"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <RelativeLayout
@@ -103,10 +104,10 @@
 
             <Button
                 android:id="@+id/button_reject"
-                android:layout_toRightOf="@+id/button_accept"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/button_accept"
                 android:background="@color/fancy_red"
                 android:focusable="false"
                 android:paddingLeft="5dp"
@@ -120,10 +121,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:textColor="@color/dark_grey"
                 android:layout_centerHorizontal="true"
-                android:text="COMPLETED" />
-
+                android:text="COMPLETED"
+                android:textColor="@color/dark_grey" />
         </RelativeLayout>
     </LinearLayout>
 

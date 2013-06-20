@@ -18,15 +18,15 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.lisbonbigapps.myhoster.client.R;
 import com.lisbonbigapps.myhoster.client.adapter.ServiceModelListAdapter;
-import com.lisbonbigapps.myhoster.client.request.ServicesRequest;
+import com.lisbonbigapps.myhoster.client.request.ServicesTouristRequest;
 import com.lisbonbigapps.myhoster.client.resources.ListServiceResource;
 import com.lisbonbigapps.myhoster.client.resources.ServiceResource;
 import com.lisbonbigapps.myhoster.client.ui.MainActivity;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
-public class ServicesFragment extends SherlockListFragment {
-    static final String TAG = ServicesFragment.class.toString();
+public class TouristServiceListFragment extends SherlockListFragment {
+    static final String TAG = TouristServiceListFragment.class.toString();
     static final int AB_REFRESH = 1;
 
     @Override
@@ -91,7 +91,7 @@ public class ServicesFragment extends SherlockListFragment {
 
     private void getServices() {
 	MainActivity activity = (MainActivity) this.getActivity();
-	ServicesRequest request = new ServicesRequest();
+	ServicesTouristRequest request = new ServicesTouristRequest();
 	activity.getContentManager().execute(request, new ServicesRequestListener());
     }
 
@@ -109,8 +109,8 @@ public class ServicesFragment extends SherlockListFragment {
 	}
 
 	@Override
-	public void onRequestSuccess(ListServiceResource list) {
-	    if (list == null) {
+	public void onRequestSuccess(ListServiceResource services) {
+	    if (services == null) {
 		return;
 	    }
 
@@ -119,8 +119,8 @@ public class ServicesFragment extends SherlockListFragment {
 		return;
 	    }
 
-	    ServiceResource[] services = list.toArray(new ServiceResource[list.size()]);
-	    ListAdapter listAdapter = new ServiceModelListAdapter(context, services);
+	    ServiceResource[] servicesArray = services.toArray(new ServiceResource[services.size()]);
+	    ListAdapter listAdapter = new ServiceModelListAdapter(context, servicesArray);
 	    setListAdapter(listAdapter);
 	}
     }
