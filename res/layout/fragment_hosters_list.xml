@@ -7,50 +7,6 @@
     android:layout_marginRight="@dimen/layout_margin"    
     android:orientation="vertical"
     android:background="@color/white" >
-    
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="left"
-            android:layout_marginBottom="@dimen/layout_separator_margin"
-            android:orientation="horizontal" >
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal" >
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_radar_around" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-				android:background="@drawable/titles_bg"                
-                android:layout_weight="3"
-                android:gravity="left"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"                   
-                    android:text="LOCALS AROUND YOU"
-                    android:textStyle="bold"
-                    android:textColor="@color/fancy_blue"
-                    android:textSize="@dimen/menuNotificationBoxText" />
-            </LinearLayout>
-        </LinearLayout>
 
     <ListView
         android:id="@android:id/list"

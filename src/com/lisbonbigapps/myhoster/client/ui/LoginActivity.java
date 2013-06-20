@@ -57,6 +57,7 @@ public class LoginActivity extends Activity {
 	    }
 	});
 
+	fillView();
 	Log.d(TAG, "onCreate");
     }
 
@@ -75,6 +76,15 @@ public class LoginActivity extends Activity {
     private void performAuthentication(String username, String password) {
 	UserLoginRequest request = new UserLoginRequest(username, password);
 	contentManager.execute(request, new UserRequestListener());
+    }
+
+    protected void fillView() {
+	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+	String username = preferences.getString(PreferencesHelper.Username, "");
+	String password = preferences.getString(PreferencesHelper.Password, "");
+
+	EtUsername.setText(username);
+	EtPassword.setText(password);
     }
 
     private class UserRequestListener implements RequestListener<UserResource> {
@@ -100,7 +110,7 @@ public class LoginActivity extends Activity {
 
 	    editor.putString(PreferencesHelper.Password, password).commit();
 	    editor.commit();
-	    
+
 	    App app = (App) getApplication();
 	    app.setUser(user);
 

@@ -21,6 +21,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -81,9 +82,18 @@ public class MainActivity extends SlidingFragmentActivity implements HostListFra
     @Override
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
-
 	this.setMessagesDataSource(new MessagesDataSource(this));
 
+	// ACTION BAR
+	// BitmapDrawable bg = (BitmapDrawable)
+	// getResources().getDrawable(R.drawable.ab_bg);
+	// bg.setTileModeXY(TileMode.REPEAT, TileMode.REPEAT);
+	// getSupportActionBar().setBackgroundDrawable(bg);
+
+	ActionBar bar = getSupportActionBar();
+	bar.setDisplayHomeAsUpEnabled(true);
+	bar.setTitle("");
+	//bar.setIcon(getResources().getDrawable(R.drawable.ic_ab));
 	// this.getMessagesDataSource().drop();
 
 	// set the Behind View
@@ -115,14 +125,6 @@ public class MainActivity extends SlidingFragmentActivity implements HostListFra
 	    ft.add(R.id.fragment_content, new HostListFragment());
 	    ft.commit();
 	}
-
-	// ACTION BAR
-	BitmapDrawable bg = (BitmapDrawable) getResources().getDrawable(R.drawable.ab_bg);
-	bg.setTileModeXY(TileMode.REPEAT, TileMode.REPEAT);
-	getSupportActionBar().setBackgroundDrawable(bg);
-	getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-	getSupportActionBar().setTitle("");
-	getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_ab));
     }
 
     @Override
@@ -416,10 +418,10 @@ public class MainActivity extends SlidingFragmentActivity implements HostListFra
     }
 
     public LocalTracker getTracker() {
-        return tracker;
+	return tracker;
     }
 
     public void setTracker(LocalTracker tracker) {
-        this.tracker = tracker;
+	this.tracker = tracker;
     }
 }
