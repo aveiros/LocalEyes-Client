@@ -150,7 +150,7 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/Button01"
+            android:id="@+id/login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/blue_button"
@@ -167,7 +167,7 @@
 			    android:textSize="@dimen/smallText" />
 
 			<Button
-			    android:id="@+id/login"
+			    android:id="@+id/loginFacebook"
 			    android:layout_width="fill_parent"
 			    android:layout_height="wrap_content"
 			    android:background="@drawable/blue_button"
